@@ -84,7 +84,7 @@ function initWatchMovementCanvas() {
   let width = 0;
   let height = 0;
   let time = 0;
-  let speedMultiplier = 1.0;
+  let speedMultiplier = 0.25; // Varsayılan olarak ağır çekim görünümü
   let isWinding = false;
   let mainspringTension = 0.88; // 0.0 to 1.0
   let isDragging = false;
@@ -140,6 +140,7 @@ function initWatchMovementCanvas() {
     if (btnSlow) btnSlow.classList.toggle("active", speedMultiplier === 0.25);
     if (btnAuto) btnAuto.classList.toggle("active", speedMultiplier === 1.0);
   }
+  updateButtonStates();
 
   // Interactive Drag to Wind or Inspect
   canvas.addEventListener("pointerdown", (e) => {
@@ -310,21 +311,21 @@ function initWatchMovementCanvas() {
 
     const cx = width / 2;
     const cy = height / 2;
-    const scale = Math.min(width, height) / 500;
+    const scale = Math.min(width, height) / 430; // Büyütülmüş mekanizma ölçeği
 
     ctx.save();
     ctx.translate(cx, cy);
 
-    // 1. BASEPLATE & CALIBRE CIRCULAR PERIMETER (Ana Plaka & Karakalem Dairesi)
-    const plateR = 225 * scale;
+    // 1. BASEPLATE & CALIBRE CIRCULAR PERIMETER (Site Temasıyla Uyumlu Ana Plaka)
+    const plateR = 210 * scale;
     ctx.save();
 
     // Outer Calibre Plate outline
     ctx.beginPath();
     ctx.arc(0, 0, plateR, 0, Math.PI * 2);
-    ctx.fillStyle = "#1c1b22";
+    ctx.fillStyle = "#221a30"; // Sitenin koyu mor/patine kimliği
     ctx.fill();
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+    ctx.strokeStyle = "rgba(195, 175, 230, 0.45)";
     ctx.lineWidth = 1.8;
     ctx.stroke();
 
@@ -361,9 +362,9 @@ function initWatchMovementCanvas() {
     ctx.lineTo(35 * scale, -40 * scale);
     ctx.lineTo(-45 * scale, 15 * scale);
     ctx.closePath();
-    ctx.fillStyle = "rgba(35, 32, 45, 0.75)";
+    ctx.fillStyle = "rgba(42, 34, 58, 0.85)";
     ctx.fill();
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+    ctx.strokeStyle = "rgba(225, 215, 245, 0.45)";
     ctx.lineWidth = 1.2;
     ctx.stroke();
 
@@ -375,9 +376,9 @@ function initWatchMovementCanvas() {
     ctx.lineTo(35 * scale, 125 * scale);
     ctx.lineTo(-15 * scale, 85 * scale);
     ctx.closePath();
-    ctx.fillStyle = "rgba(38, 34, 48, 0.75)";
+    ctx.fillStyle = "rgba(45, 36, 62, 0.85)";
     ctx.fill();
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+    ctx.strokeStyle = "rgba(225, 215, 245, 0.45)";
     ctx.lineWidth = 1.2;
     ctx.stroke();
 
@@ -389,9 +390,9 @@ function initWatchMovementCanvas() {
     ctx.arc(-100 * scale, 75 * scale, 22 * scale, 1.8 * Math.PI, 0.9 * Math.PI);
     ctx.lineTo(-175 * scale, 110 * scale);
     ctx.closePath();
-    ctx.fillStyle = "rgba(42, 38, 54, 0.85)";
+    ctx.fillStyle = "rgba(48, 38, 66, 0.9)";
     ctx.fill();
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+    ctx.strokeStyle = "rgba(240, 230, 255, 0.55)";
     ctx.lineWidth = 1.4;
     ctx.stroke();
 

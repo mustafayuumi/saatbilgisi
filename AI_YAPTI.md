@@ -2,28 +2,25 @@
 
 1. **Ayrı HTML Sayfalarına Bölme (Multi-Page):**
    - Site tek sayfa yapısından çıkarılarak bağımsız HTML dosyalarına ayrıldı:
-     - `index.html`: Giriş, tam mekanik saat kalibresi karakalem teknik kesit çizimi, rehber özet kartları ve mekanik saatin 5 organı.
+     - `index.html`: Giriş, tam mekanik saat kalibresi karakalem teknik kesit çizimi ve rehber özet kartları.
      - `mekanizmalar.html`: Seiko NH, ETA, Ronda ve Miyota kalibreleri, arama, 4 kademeli filtreleme ve detay pencereleri (popover).
      - `komplikasyonlar.html`: Tourbillon, Chronograph, Flyback, Moonphase ve Perpetual Calendar kartları, arama ve teknik açıklamalar.
      - `bezeller.html`: Dalgıç, Takimetre ve GMT bezelleri için kullanım kılavuzları, matematiksel formüller ve güvenlik ipuçları.
    - Üst gezinme çubuğu (`.topbar`) ve alt gezinme (`.site-footer`) tüm sayfalarda aktif sayfa vurgusu (`.active`, `aria-current="page"`) ile bağlandı.
 
 2. **Tipografi ve Font Değişimi (Roboto):**
-   - Video oyunu havası veren retro/geometrik fontlar (Space Grotesk, DM Sans) kaldırıldı.
-   - Tüm başlıklar, gövde metinleri ve etiketler profesyonel ve okunaklı **Roboto** ve teknik veriler için **Roboto Mono** ile değiştirildi.
-   - Harf aralıkları ve satır yükseklikleri saatçilik yayınlarına uygun biçimde dengelendi.
+   - Video oyunu havası veren retro fontlar kaldırıldı.
+   - Başlıklar, gövde metinleri ve etiketler **Roboto** ve teknik veriler için **Roboto Mono** ile güncellendi.
 
-3. **Tam Mekanik Saat Kalibresi Karakalem Çizimi ve İnteraktif Simülasyonu:**
-   - Sadece zemberek değil, saatin içindeki **tüm mekanik organlar** bir arada çalışan bir kalibre olarak çizildi:
-     - **Zemberek ve Tulumba (Barillet):** 72 dişli tulumba gövdesi, içindeki açık kesitte görünen spiral çelik zemberek şeridi ve cırcır çarkı.
-     - **Çark Grubu (Rouage):** Merkez çarkı (64 diş), ara çark (60 diş), saniye çarkı (60 diş, 1 RPM) pirinç ve çelik tonlarında gerçeğe uygun dişli profilleriyle.
-     - **Eşapman Çarkı & Maşası (Échappement):** 15 tırnaklı özel kulüp dişli ve 2 adet sentetik yakut taşa (pallets) sahip çalışan eşapman maşası.
-     - **Balans Çarkı ve Pandül Yayı (Balancier & Spiral):** Altın Glucydur balans çarkı, çevre ayar vidaları, salınan mavi kılcal pandül yayı ve merkezde Incabloc şok koruma yayı (lir yay).
-     - **Ana Plaka ve Köprüler:** Karakalem dairesel finiş (perlage) dokusu, köprü pahları, mavi çelik vidalar ve yakut yataklar (jewels).
-   - **Gerçek Zamanlı Senkron Fizik (28.800 BPH / 4 Hz):** Balans çarkı saniyede 8 vuruş yaparken eşapman maşası kilitlenip serbest kalır ve çark treni torku aktarır.
-   - **Kontroller:** "Kur" (zembereği sarar), "Ağır Çekim" (0.25x hızda dişli temasını izletir), "Canlı Mekanizma" (gerçek çalışma hızı) ve dokunmatik/fare ile manuel kurma.
-   - **1:1 Gerçek Boyut:** Standart saat kalibre çapı olan Ø 27.4 mm referans halkası eklendi.
+3. **Tam Mekanik Saat Kalibresi & Boyut/Yerleşim Güncellemeleri:**
+   - **Genişlik Oranı:** Anasayfadaki mekanizma alanı %50'den **%35** genişliğe çekildi (`grid-template-columns: 35% 65%`), metin ve içerik alanı ferahlatıldı.
+   - **Büyütülmüş Mekanizma Çizimi:** Mekanizma çizim ölçeği artırılarak tuvali dolduracak şekilde daha büyük, net ve detaylı hale getirildi.
+   - **Site Temasıyla Uyumlu Doku:** Mekanizmanın arkasındaki piksel/ızgara dokusu kaldırıldı; yerine sitenin mor ve lüks saatçilik kimliğiyle uyumlu dairesel teknik pergel yayları ve yumuşak radyal ışık geçişi (`#28203c` - `#151022`) yerleştirildi.
+   - **Ağır Çekim Varsayılanı:** Mekanizma varsayılan olarak **Ağır Çekim (0.25x)** modunda başlar; dişli temasları ve eşapman kilitleri netçe izlenebilir.
 
-4. **Kartların Boyutlandırılması (Daha Uzun Kartlar):**
-   - Tüm kartların dikey boyu uzatıldı (`min-height: 380px` – `420px`).
-   - Kartlara alt başlıklar, detaylı mekanik açıklamalar, teknik özellik etiketleri (taş sayısı, BPH, hacking, şok koruma) ve görsel boşluklar eklendi.
+4. **Bölüm Kaldırma & Footer Düzenlemesi:**
+   - Anasayfadaki *"Bir Mekanik Saatin 5 Organı"* bölümü kaldırıldı.
+   - Sitenin tüm sayfalarının altındaki footer alanına *"Bu site eğitim amaçlı hazırlanmış bir içeriktir."* notu eklendi.
+
+5. **Kart Boyutları:**
+   - Tüm kartlar daha uzun ve ferah dikey ölçülerle (`min-height: 380px` – `420px`) korundu.

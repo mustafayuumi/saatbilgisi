@@ -179,7 +179,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 /* HOME HERO */
 .home-hero {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 35% 65%;
   min-height: calc(100svh - 72px);
   border-bottom: 1px solid var(--line);
   background: var(--paper);
@@ -190,20 +190,18 @@ h1, h2, h3, h4, p { margin-top: 0; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px 24px;
-  background: #1c1b22;
-  color: #e5e3eb;
+  padding: 24px 16px;
+  background: radial-gradient(circle at 50% 48%, #28203c 0%, #1e172e 68%, #151022 100%);
+  color: #e8e5f0;
   overflow: hidden;
-  border-right: 1px solid #2f2d38;
+  border-right: 1px solid var(--line);
 }
 .hero-art-container::before {
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(95, 75, 140, 0.14) 0%, transparent 72%),
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 100% 100%, 28px 28px, 28px 28px;
+    radial-gradient(circle at 50% 50%, rgba(138, 108, 196, 0.2) 0%, transparent 70%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 40px, rgba(210, 195, 240, 0.04) 41px, transparent 42px);
   pointer-events: none;
   content: "";
 }
@@ -992,6 +990,12 @@ h1, h2, h3, h4, p { margin-top: 0; }
   margin: 0;
   font-size: 12px;
 }
+.footer-disclaimer {
+  margin-top: 4px !important;
+  font-size: 11px !important;
+  color: var(--muted);
+  opacity: 0.85;
+}
 .footer-links {
   display: flex;
   gap: 20px;
@@ -1002,6 +1006,12 @@ h1, h2, h3, h4, p { margin-top: 0; }
 }
 
 /* RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
+  .home-hero {
+    grid-template-columns: 42% 58%;
+  }
+}
+
 @media (max-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
