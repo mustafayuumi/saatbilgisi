@@ -86,6 +86,7 @@ function initWatchMovementCanvas() {
   let time = 0;
   let speedMultiplier = 0.25; // Varsayılan olarak ağır çekim görünümü
   let isWinding = false;
+  let crownAngle = 0; // Kurma kolunun dönüş açısı
   let mainspringTension = 0.88; // 0.0 to 1.0
   let isDragging = false;
   let lastDragY = 0;
@@ -99,14 +100,39 @@ function initWatchMovementCanvas() {
   let balanceAngle = 0;
   let palletAngle = 0;
 
+  let lastDragX = 0;
+  let windInterval = null;
+
   function resize() {
     const rect = canvas.getBoundingClientRect();
-    width = rect.width;
-    height = rect.height;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
+    const parent = canvas.parentElement;
+    const parentRect = parent ? parent.getBoundingClientRect() : null;
+    const container = canvas.closest(".hero-art-container");
+    const containerRect = container ? container.getBoundingClientRect() : null;
+
+    let computedW = Math.round(rect.width || (parentRect && parentRect.width) || (containerRect && containerRect.width) || 0);
+    if (!computedW || computedW < 50) {
+      computedW = Math.round(Math.max(300, window.innerWidth * 0.35));
+    }
+
+    width = computedW;
+    height = computedW; // 1:1 tam kare oran
+
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
     ctx.resetTransform?.();
     ctx.scale(dpr, dpr);
+  }
+
+  if (typeof ResizeObserver !== "undefined") {
+    const ro = new ResizeObserver(() => {
+      resize();
+    });
+    if (canvas.parentElement) {
+      ro.observe(canvas.parentElement);
+    } else {
+      ro.observe(canvas);
+    }
   }
 
   window.addEventListener("resize", resize);
@@ -116,8 +142,22 @@ function initWatchMovementCanvas() {
   if (btnWind) {
     btnWind.addEventListener("click", () => {
       isWinding = true;
-      mainspringTension = Math.min(1.0, mainspringTension + 0.18);
-      setTimeout(() => { isWinding = false; }, 400);
+      mainspringTension = Math.min(1.0, mainspringTension + 0.22);
+      if (windInterval) clearInterval(windInterval);
+      btnWind.classList.add("active");
+
+      let stepCount = 0;
+      windInterval = setInterval(() => {
+        crownAngle += 0.42; // Kurma kolu tırtıkları döner
+        barrelAngle += 0.045; // Zemberek tamburu sarılır
+        stepCount++;
+        if (stepCount > 36) {
+          clearInterval(windInterval);
+          windInterval = null;
+          isWinding = false;
+          btnWind.classList.remove("active");
+        }
+      }, 25);
       updateButtonStates("wind");
     });
   }
@@ -142,19 +182,24 @@ function initWatchMovementCanvas() {
   }
   updateButtonStates();
 
-  // Interactive Drag to Wind or Inspect
+  // Interactive Drag to Wind or Inspect (Kurma kolu ve zembereği elle çevirme)
   canvas.addEventListener("pointerdown", (e) => {
     isDragging = true;
+    lastDragX = e.clientX;
     lastDragY = e.clientY;
     canvas.setPointerCapture(e.pointerId);
   });
 
   canvas.addEventListener("pointermove", (e) => {
     if (!isDragging) return;
-    const deltaY = lastDragY - e.clientY;
+    const dy = lastDragY - e.clientY;
+    const dx = e.clientX - lastDragX;
+    lastDragX = e.clientX;
     lastDragY = e.clientY;
-    mainspringTension = Math.max(0.15, Math.min(1.0, mainspringTension + deltaY * 0.005));
-    barrelAngle += deltaY * 0.015;
+    const delta = Math.abs(dy) > Math.abs(dx) ? dy : -dx;
+    mainspringTension = Math.max(0.15, Math.min(1.0, mainspringTension + delta * 0.005));
+    crownAngle += delta * 0.16;
+    barrelAngle += delta * 0.018;
   });
 
   const stopDrag = (e) => {
@@ -309,15 +354,177 @@ function initWatchMovementCanvas() {
   function render(timeMs) {
     ctx.clearRect(0, 0, width, height);
 
-    const cx = width / 2;
+    // Saatin sol ve sağ kenarlarını sol bölgenin tam sınırlarına oturtan ölçekleme:
+    // Sol kenar: x = 4px (sol kasa çerçevesi)
+    // Sağ kenar: x = width - 4px (sağdaki kurma kolu ucu)
+    const scale = (width - 8) / 455;
+    const caseOuterR = 215 * scale;
+    const cx = 4 + caseOuterR;
     const cy = height / 2;
-    const scale = Math.min(width, height) / 430; // Büyütülmüş mekanizma ölçeği
 
     ctx.save();
     ctx.translate(cx, cy);
 
+    // 0. WATCH CASE FRAME (KASA ÇERÇEVESİ - Sol bölümün sınırlarına tam oturan kasa)
+    const caseBezelInnerR = caseOuterR - 22 * scale;
+    const rehautInnerR = caseOuterR - 35 * scale;
+    const plateR = rehautInnerR - 1;
+
+    // A. Outer Stainless Steel Bezel (Satine Çelik Kasa Çerçevesi)
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(0, 0, caseOuterR, 0, Math.PI * 2);
+    ctx.arc(0, 0, caseBezelInnerR, Math.PI * 2, 0, true);
+    ctx.closePath();
+
+    const caseGrad = ctx.createLinearGradient(-caseOuterR, -caseOuterR, caseOuterR, caseOuterR);
+    caseGrad.addColorStop(0.0, "rgba(230, 225, 245, 0.98)");
+    caseGrad.addColorStop(0.25, "rgba(150, 140, 170, 0.94)");
+    caseGrad.addColorStop(0.5, "rgba(250, 245, 255, 0.99)");
+    caseGrad.addColorStop(0.75, "rgba(140, 130, 160, 0.94)");
+    caseGrad.addColorStop(1.0, "rgba(225, 220, 240, 0.98)");
+    ctx.fillStyle = caseGrad;
+    ctx.fill();
+
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.lineWidth = 1.6;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(0, 0, caseBezelInnerR, 0, Math.PI * 2);
+    ctx.strokeStyle = "rgba(45, 35, 65, 0.6)";
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    // 6 Exhibition Case Screws (Kasa Çerçevesi Vidaları)
+    for (let sc = 0; sc < 6; sc++) {
+      const scAngle = (sc / 6) * Math.PI * 2 + 0.25;
+      const scR = (caseOuterR + caseBezelInnerR) / 2;
+      drawScrew(Math.cos(scAngle) * scR, Math.sin(scAngle) * scR, 3.8 * scale, scAngle + 0.5);
+    }
+
+    // B. Inner Rehaut / Depth Ring (Kasa İç Flanşı & 60 Dakika Çizgileri)
+    ctx.beginPath();
+    ctx.arc(0, 0, caseBezelInnerR, 0, Math.PI * 2);
+    ctx.arc(0, 0, rehautInnerR, Math.PI * 2, 0, true);
+    ctx.closePath();
+    ctx.fillStyle = "rgba(24, 19, 34, 0.97)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(195, 180, 230, 0.35)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // 60 Tick marks around inner rehaut
+    for (let t = 0; t < 60; t++) {
+      const ta = (t / 60) * Math.PI * 2;
+      const isMajor = t % 5 === 0;
+      const tickLen = isMajor ? 6.5 * scale : 3.5 * scale;
+      const r1 = caseBezelInnerR - 1.5 * scale;
+      const r2 = r1 - tickLen;
+      ctx.beginPath();
+      ctx.moveTo(Math.cos(ta) * r1, Math.sin(ta) * r1);
+      ctx.lineTo(Math.cos(ta) * r2, Math.sin(ta) * r2);
+      ctx.strokeStyle = isMajor ? "rgba(255, 255, 255, 0.88)" : "rgba(255, 255, 255, 0.35)";
+      ctx.lineWidth = isMajor ? 1.4 : 0.8;
+      ctx.stroke();
+    }
+
+    // C. WINDING CROWN & STEM (KURMA KOLU - 3 YÖNÜNDE, KURA BASINCA VE SÜRÜKLEYİNCE DÖNER)
+    const crownCenterY = 0;
+    const crownStartX = caseOuterR - 2 * scale;
+    const crownTubeW = 5 * scale;
+    const crownTubeH = 13 * scale;
+    const crownHeadW = 15 * scale;
+    const crownHeadH = 26 * scale;
+
+    // Crown Stem Tube (Kurma Mili Borusu)
+    ctx.beginPath();
+    ctx.rect(crownStartX, crownCenterY - crownTubeH / 2, crownTubeW, crownTubeH);
+    ctx.fillStyle = "rgba(180, 175, 195, 0.95)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(45, 38, 55, 0.7)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Crown Guards (Kasa Kurma Kolu Korumaları / Omuzları)
+    ctx.beginPath();
+    ctx.moveTo(Math.cos(-0.2) * caseOuterR, Math.sin(-0.2) * caseOuterR);
+    ctx.quadraticCurveTo(caseOuterR + 6 * scale, -crownTubeH * 0.85, caseOuterR + 3 * scale, -crownTubeH * 0.48);
+    ctx.lineTo(caseOuterR, -crownTubeH * 0.48);
+    ctx.arc(0, 0, caseOuterR, -0.06, -0.2, true);
+    ctx.fillStyle = caseGrad;
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.75)";
+    ctx.lineWidth = 1.1;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(Math.cos(0.2) * caseOuterR, Math.sin(0.2) * caseOuterR);
+    ctx.quadraticCurveTo(caseOuterR + 6 * scale, crownTubeH * 0.85, caseOuterR + 3 * scale, crownTubeH * 0.48);
+    ctx.lineTo(caseOuterR, crownTubeH * 0.48);
+    ctx.arc(0, 0, caseOuterR, 0.06, 0.2, false);
+    ctx.fillStyle = caseGrad;
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.75)";
+    ctx.lineWidth = 1.1;
+    ctx.stroke();
+
+    // Crown Head Body (Çelik Silindirik Kurma Kolu Gövdesi)
+    const crownX = crownStartX + crownTubeW;
+    const crownY = crownCenterY - crownHeadH / 2;
+
+    const crownGrad = ctx.createLinearGradient(0, crownY, 0, crownY + crownHeadH);
+    crownGrad.addColorStop(0.0, "rgba(240, 235, 250, 0.98)");
+    crownGrad.addColorStop(0.25, "rgba(150, 140, 170, 0.95)");
+    crownGrad.addColorStop(0.5, "rgba(245, 240, 255, 0.99)");
+    crownGrad.addColorStop(0.75, "rgba(140, 130, 160, 0.95)");
+    crownGrad.addColorStop(1.0, "rgba(225, 220, 240, 0.98)");
+
+    ctx.beginPath();
+    ctx.rect(crownX, crownY, crownHeadW, crownHeadH);
+    ctx.fillStyle = crownGrad;
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    // Rotating Flutes / Knurling Teeth (Dönen Tırtık Çizgileri - crownAngle ile döner!)
+    const fluteCount = 12;
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(crownX, crownY, crownHeadW, crownHeadH);
+    ctx.clip();
+
+    for (let f = 0; f < fluteCount; f++) {
+      const phase = (f / fluteCount) * Math.PI * 2 + crownAngle;
+      const normalizedY = (Math.sin(phase) + 1) / 2;
+      const fy = crownY + normalizedY * crownHeadH;
+      const depth = Math.cos(phase);
+
+      if (depth > 0) {
+        ctx.beginPath();
+        ctx.moveTo(crownX, fy);
+        ctx.lineTo(crownX + crownHeadW, fy);
+        ctx.strokeStyle = depth > 0.5 ? "rgba(255, 255, 255, 0.92)" : "rgba(30, 25, 42, 0.7)";
+        ctx.lineWidth = 1.4 * scale;
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+
+    // Crown Dome Cap (Kubbe Uç)
+    const domeR = crownHeadH * 0.42;
+    ctx.beginPath();
+    ctx.arc(crownX + crownHeadW - domeR * 0.35, crownCenterY, domeR, -0.42 * Math.PI, 0.42 * Math.PI);
+    ctx.fillStyle = "rgba(230, 225, 245, 0.98)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    ctx.restore(); // end case frame
+
     // 1. BASEPLATE & CALIBRE CIRCULAR PERIMETER (Site Temasıyla Uyumlu Ana Plaka)
-    const plateR = 210 * scale;
     ctx.save();
 
     // Outer Calibre Plate outline
@@ -330,7 +537,7 @@ function initWatchMovementCanvas() {
     ctx.stroke();
 
     // Perlage texture (Dairesel finiş taramaları)
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.035)";
+    ctx.strokeStyle = "rgba(220, 205, 250, 0.045)";
     ctx.lineWidth = 1;
     for (let r = 35 * scale; r < plateR - 10 * scale; r += 26 * scale) {
       const count = Math.floor((r * Math.PI * 2) / (32 * scale));
@@ -690,48 +897,7 @@ function initWatchMovementCanvas() {
 
     ctx.restore();
 
-    // 7. TECHNICAL DRAFTING ANNOTATIONS & LEADER LABELS (Karakalem Teknik Etiketleri)
-    ctx.save();
-    ctx.fillStyle = "rgba(220, 215, 235, 0.85)";
-    ctx.font = `${Math.round(8.5 * scale)}px "Roboto Mono", monospace`;
-
-    // Barrel Callout
-    ctx.fillText("1. ZEMBEREK (BARILLET)", -215 * scale, -135 * scale);
-    ctx.strokeStyle = "rgba(200, 195, 220, 0.35)";
-    ctx.lineWidth = 0.9;
-    ctx.beginPath();
-    ctx.moveTo(-100 * scale, -135 * scale);
-    ctx.lineTo(-82 * scale, -100 * scale);
-    ctx.stroke();
-
-    // Center & Train Wheel Callout
-    ctx.textAlign = "right";
-    ctx.fillText("2. ÇARK TRENİ (ROUAGE)", 215 * scale, -65 * scale);
-    ctx.beginPath();
-    ctx.moveTo(105 * scale, -65 * scale);
-    ctx.lineTo(55 * scale, -45 * scale);
-    ctx.stroke();
-
-    // Escapement Callout
-    ctx.fillText("3. EŞAPMAN (ÉCHAPPEMENT)", 215 * scale, 125 * scale);
-    ctx.beginPath();
-    ctx.moveTo(90 * scale, 125 * scale);
-    ctx.lineTo(-10 * scale, 122 * scale);
-    ctx.stroke();
-
-    // Balance-Spring Callout
-    ctx.textAlign = "left";
-    ctx.fillText("4. BALANS & PANDÜL YAYI", -215 * scale, 175 * scale);
-    ctx.beginPath();
-    ctx.moveTo(-95 * scale, 175 * scale);
-    ctx.lineTo(-90 * scale, 120 * scale);
-    ctx.stroke();
-
-    // Calibre Specs Bottom Center
-    ctx.textAlign = "center";
-    ctx.fillStyle = "rgba(210, 190, 140, 0.9)";
-    ctx.fillText("CAL. MEK-01 · Ø 27.4 mm · 25 TAŞ · 28.800 A/h", 0, 212 * scale);
-    ctx.restore();
+    // 7. Sadece saf mekanizma (Numaralandırmalar kaldırıldı)
 
     ctx.restore(); // end center translation
   }
