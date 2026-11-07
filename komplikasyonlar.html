@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f8f7">
+    <meta name="description" content="Saat komplikasyonları rehberi: Tourbillon, Chronograph, Flyback, Moonphase ve Perpetual Calendar mekanizmaları.">
+    <title>Komplikasyonlar — Saat İşlevleri Rehberi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="index.html" aria-label="Saatler Rehberi Anasayfa">Saatler <span>· Rehber</span></a>
+      <nav class="main-nav" aria-label="Ana gezinme">
+        <a class="nav-link" href="index.html">Anasayfa</a>
+        <a class="nav-link" href="mekanizmalar.html">Mekanizmalar</a>
+        <a class="nav-link active" aria-current="page" href="komplikasyonlar.html">Komplikasyonlar</a>
+        <a class="nav-link" href="bezeller.html">Bezeller</a>
+      </nav>
+      <a class="topbar-index" href="bezeller.html">BEZELLER <span>↘</span></a>
+    </header>
+
+    <main class="page-wrap content-section">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-mark"></span> ZAMANIN ÖTESİNDE</p>
+          <h1>Komplikasyonlar</h1>
+        </div>
+        <p class="section-description">Saatçilikte temel saat ve dakika gösterimi dışındaki her mekanik işleve <em>komplikasyon</em> denir. Mikro mühendisliğin zirvesini temsil eden mekanizmaları keşfedin.</p>
+      </header>
+
+      <div class="search-panel complication-search-panel">
+        <label class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Komplikasyonlarda ara</span>
+          <input id="complication-search" type="search" placeholder="Komplikasyon veya özellik ara..." autocomplete="off">
+        </label>
+        <p class="result-count" id="complication-count" aria-live="polite"></p>
+      </div>
+
+      <div class="card-grid complication-grid" id="complication-grid">
+        <article class="info-card complication-card" data-search="tourbillon türbillon denge çarkı yerçekimi düzenleyici hassasiyet kafes breguet 1801">
+          <div class="card-meta"><span>HASSASİYET DÜZENLEYİCİ</span><span>01 / 05</span></div>
+          <h3>Tourbillon</h3>
+          <p class="card-subtitle">Yerçekimi Telafi Kafesi · 1801</p>
+          <p class="card-description">Denge çarkı ve eşapman maşasını kendi etrafında dakikada 360 derece dönen ultra hafif bir kafes içine alarak yerçekiminin yarattığı konumsal sapmaları ortalamayı amaçlar.</p>
+          <div class="card-features">
+            <span class="feature-tag">360° Dönen Kafes</span>
+            <span class="feature-tag">Titanyum / Çelik</span>
+            <span class="feature-tag">Yüksek Saatçilik</span>
+          </div>
+          <div class="card-specs"><span>Zorluk Seviyesi: Üst Düzey</span><span>Tarih: 1801 (Breguet)</span></div>
+          <button class="card-link" type="button" popovertarget="comp-tourbillon">Çalışma mantığını incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card complication-card" data-search="chronograph kronograf kronometre süre ölçme merkezi saniye sayaç alt kadran buton">
+          <div class="card-meta"><span>SÜRE ÖLÇÜMÜ</span><span>02 / 05</span></div>
+          <h3>Chronograph</h3>
+          <p class="card-subtitle">Bağımsız Süre Ölçümü & Sayaçlar</p>
+          <p class="card-description">Saatin normal zaman gösterimini kesintiye uğratmadan, bağımsız bir dişli debriyajı (dikey veya yatay kavrama) ile geçen süreyi başlatır, durdurur ve anında sıfırlar.</p>
+          <div class="card-features">
+            <span class="feature-tag">Kolon Çarkı / Kam</span>
+            <span class="feature-tag">30/60 Dk Sayacı</span>
+            <span class="feature-tag">Dikey Debriyaj</span>
+          </div>
+          <div class="card-specs"><span>Zorluk Seviyesi: İleri</span><span>Kullanım: Yarış & Havacılık</span></div>
+          <button class="card-link" type="button" popovertarget="comp-chronograph">Çalışma mantığını incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card complication-card" data-search="flyback chronograph flyback kronograf tek basışta sıfırla yeniden başlat havacılık pilot">
+          <div class="card-meta"><span>HIZLI SÜRE ÖLÇÜMÜ</span><span>03 / 05</span></div>
+          <h3>Flyback Chronograph</h3>
+          <p class="card-subtitle">Tek Hamlede Sıfırla ve Başlat</p>
+          <p class="card-description">Standart kronograflardaki durdurma-sıfırlama-başlatma adımlarını tek bir düğme basışına indirger. Butona basıldığı an ibre anında sıfıra uçar ve yeni ölçüm kendiliğinden başlar.</p>
+          <div class="card-features">
+            <span class="feature-tag">Anlık Sıfırlama</span>
+            <span class="feature-tag">Darbe Emici Yay</span>
+            <span class="feature-tag">Pilot Kronometresi</span>
+          </div>
+          <div class="card-specs"><span>Zorluk Seviyesi: İleri</span><span>Köken: Askeri Havacılık</span></div>
+          <button class="card-link" type="button" popovertarget="comp-flyback">Çalışma mantığını incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card complication-card" data-search="moonphase ay evresi moon phase ay takvimi sinodik ay 29.5 gün gökyüzü astronomik">
+          <div class="card-meta"><span>GÖKYÜZÜ GÖSTERGESİ</span><span>04 / 05</span></div>
+          <h3>Moonphase</h3>
+          <p class="card-subtitle">29.53 Günlük Sinodik Ay Döngüsü</p>
+          <p class="card-description">Dünya'dan görülen ayın hilal, ilkdördün ve dolunay evrelerini kadrandaki kavisli açıklıkta resmeder. 59 dişli özel çark sayesinde her gün yarım diş ilerleyerek gökyüzünü bileğe taşır.</p>
+          <div class="card-features">
+            <span class="feature-tag">59 Dişli Disk</span>
+            <span class="feature-tag">Astronomik Hesap</span>
+            <span class="feature-tag">Altın / Emaye Disk</span>
+          </div>
+          <div class="card-specs"><span>Zorluk Seviyesi: Orta / İleri</span><span>Döngü: 29 Gün 12 Saat</span></div>
+          <button class="card-link" type="button" popovertarget="comp-moonphase">Çalışma mantığını incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card complication-card" data-search="perpetual calendar daimi takvim sonsuz takvim artık yıl ay gün takvimi artık yıl çarkı 29 şubat">
+          <div class="card-meta"><span>TAKVİM MÜHENDİSLİĞİ</span><span>05 / 05</span></div>
+          <h3>Perpetual Calendar</h3>
+          <p class="card-subtitle">Sonsuz Takvim & 4 Yıllık Bellek Çarkı</p>
+          <p class="card-description">28, 30 ve 31 günlük ayların tamamını ve her 4 yılda bir gelen 29 günlük Şubat artık yılını mekanik tırnaklı hafızasıyla tanır. 2100 yılına kadar hiçbir manuel tarih ayarı gerektirmez.</p>
+          <div class="card-features">
+            <span class="feature-tag">48 Aylık Bellek</span>
+            <span class="feature-tag">Artık Yıl Sayacı</span>
+            <span class="feature-tag">Grande Complication</span>
+          </div>
+          <div class="card-specs"><span>Zorluk Seviyesi: Zirve</span><span>Ayar: Yüzyılda 1 Defa</span></div>
+          <button class="card-link" type="button" popovertarget="comp-calendar">Çalışma mantığını incele <span>↗</span></button>
+        </article>
+
+        <p class="empty-state" id="complication-empty" hidden>Bu aramayla eşleşen komplikasyon bulunamadı.</p>
+      </div>
+
+      <!-- POPOVER PANELS -->
+      <div class="popover-panel" id="comp-tourbillon" popover>
+        <button class="popover-close" type="button" popovertarget="comp-tourbillon" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">HASSASİYET DÜZENLEYİCİ · 1801</p>
+        <h3>Tourbillon</h3>
+        <p class="popover-lead">Abraham-Louis Breguet tarafından 1801 yılında patentlenen, yerçekiminin düzenleyici parçalar üzerindeki olumsuz etkisini nötralize eden mekanizma.</p>
+        <p class="popover-copy">Geleneksel cep saatleri yelek cebinde gün boyu dikey konumda taşındığı için yerçekimi balans yayının ağırlık merkezini aşağı çeker ve sapmaya yol açardı. Tourbillon, tüm eşapman grubunu (balans, kılcal yay ve maşa) dakikada 360 derece dönen hafif bir titanyum veya çelik kafes içine yerleştirir. Böylece yerçekimi hatası 360 derecede birbirini dengeler.</p>
+        <p class="popover-note">Kol saatleri bilek hareketleriyle zaten sürekli konum değiştirdiği için modern tourbillon, pratik bir zorunluluktan çok saat ustasının mekanik dehasını ve mikro-finiş kabiliyetini sergileyen büyüleyici bir sanat eseridir.</p>
+      </div>
+
+      <div class="popover-panel" id="comp-chronograph" popover>
+        <button class="popover-close" type="button" popovertarget="comp-chronograph" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">SÜRE ÖLÇÜMÜ · KRONOGRAF</p>
+        <h3>Chronograph</h3>
+        <p class="popover-lead">Saatin mevcut zaman gösterimini kesintiye uğratmadan belirli bir süreyi başlatma, durdurma ve sıfırlama işlevi.</p>
+        <p class="popover-copy">Standart bir kronografta genellikle saat 2 yönündeki buton süreyi başlatır ve durdurur; saat 4 yönündeki buton ise ibreleri sıfırlar. Mekanizmanın içinde bu komutlar 'Kolon Çarkı' (Column Wheel) veya 'Kam Sistemi' (Cam Actuated) üzerinden dişli kavrama mekanizmasına iletilir.</p>
+        <p class="popover-note"><strong>Kronometre ile farkı:</strong> Kronograf bir işlevdir (kronometreli saat). Kronometre ise bağımsız COSC gibi enstitüler tarafından farklı sıcaklık ve konumlarda sınanarak -4/+6 sn/gün hassasiyet sertifikası almış yüksek hassasiyetli saat unvanıdır.</p>
+      </div>
+
+      <div class="popover-panel" id="comp-flyback" popover>
+        <button class="popover-close" type="button" popovertarget="comp-flyback" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">HIZLI SÜRE ÖLÇÜMÜ · HAVACILIK</p>
+        <h3>Flyback Chronograph</h3>
+        <p class="popover-lead">Çalışmakta olan bir kronografı durdurma gereği kalmadan tek bir basışla sıfırlayıp hemen yeni ölçüme başlatan kalibre.</p>
+        <p class="popover-copy">Geleneksel kronograf üç hamle gerektirir: Durdur (1), Sıfırla (2), Başlat (3). Yüksek hızda seyreden askeri pilotlar ve yarışçılar ardışık navigasyon ayaklarında bu üç adımı uygularken saniyeler kaybedebilirdi. Flyback mekanizmasında sıfırlama butonuna basıldığı an ibre anında sıfıra uçar (flyback) ve basmayı bıraktığınız mikrosaniyede yeni süre ölçümü başlar.</p>
+        <p class="popover-note">Flyback mekanizmasında dönen dişliler darbe emici özel kaldıraçlarla kilitlenip serbest bırakıldığı için yüksek mekanik mukavemet gerektirir.</p>
+      </div>
+
+      <div class="popover-panel" id="comp-moonphase" popover>
+        <button class="popover-close" type="button" popovertarget="comp-moonphase" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">GÖKYÜZÜ GÖSTERGESİ · SİNODİK AY</p>
+        <h3>Moonphase (Ay Evresi)</h3>
+        <p class="popover-lead">Ayın Dünya çevresindeki yaklaşık 29 gün, 12 saat, 44 dakika ve 2.8 saniyelik sinodik döngüsünü kadranda resmeden komplikasyon.</p>
+        <p class="popover-copy">Kadrandaki hilal biçimli pencerenin arkasında üzerinde iki adet altın veya lake ay figürü bulunan 59 dişli bir disk döner (59 diş = 2 tam ay döngüsü). Disk her 24 saatte bir diş ilerler. Standart bir 59 dişli ay evresi göstergesi her 2 yıl 7 ayda bir 1 tam günlük hata payı biriktirir; yüksek saatçilikteki 135 dişli astronomik mekanizmalar ise 122 yılda yalnızca 1 gün sapar.</p>
+        <p class="popover-note">Ay evresi, ayın gökyüzündeki dikey konumunu veya doğuş saatini değil; Dünya'dan bakıldığında güneş ışığı alan aydınlık yüzeyin oranını (Hilal, İlkdördün, Dolunay, Sondördün) simgeler.</p>
+      </div>
+
+      <div class="popover-panel" id="comp-calendar" popover>
+        <button class="popover-close" type="button" popovertarget="comp-calendar" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">MEKANİK BELLEK · SONSUZ TAKVİM</p>
+        <h3>Perpetual Calendar (Daimi Takvim)</h3>
+        <p class="popover-lead">Ayların 28, 30 ve 31 gün uzunluklarını ve her 4 yılda bir gelen artık yılı (29 Şubat) mekanik olarak hafızasında tutan harika.</p>
+        <p class="popover-copy">Standart takvimli saatler her 30 çeken ayın sonunda elle 1 gün ileri alınmak zorundadır. Annual Calendar (Yıllık Takvim) 30 ve 31'leri bilir ancak Şubat ayını bilmez. Perpetual Calendar ise 4 yıllık (48 aylık) bir bellek çarkına sahiptir. Şubat ayının 28 mi yoksa artık yıl sebebiyle 29 mu çektiğini mekanik dişlilerin tırnak derinlikleriyle kusursuzca algılar.</p>
+        <p class="popover-note">Gregoryen takvim kuralı gereği 100'e bölünen yıllar (400'e bölünmedikçe) artık yıl sayılmaz. Bu nedenle çoğu mekanik perpetual calendar 2100 yılında saat ustası tarafından 1 günlük manuel ayar gerektirir.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <span class="footer-mark" aria-hidden="true">✳</span>
+        <p>Saatlerin iç dünyasına dair bağımsız ve teknik rehber.</p>
+      </div>
+      <nav class="footer-links" aria-label="Alt gezinme">
+        <a href="index.html">Anasayfa</a>
+        <a href="mekanizmalar.html">Mekanizmalar</a>
+        <a href="komplikasyonlar.html">Komplikasyonlar</a>
+        <a href="bezeller.html">Bezeller</a>
+      </nav>
+    </footer>
+  </body>
+</html>

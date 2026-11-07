@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f8f7">
+    <meta name="description" content="Otomatik, kurmalı ve kuvars saat mekanizmaları kataloğu. Seiko, ETA, Ronda ve Miyota kalibre teknik detayları.">
+    <title>Mekanizmalar — Saat Kalibreleri Kataloğu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="index.html" aria-label="Saatler Rehberi Anasayfa">Saatler <span>· Rehber</span></a>
+      <nav class="main-nav" aria-label="Ana gezinme">
+        <a class="nav-link" href="index.html">Anasayfa</a>
+        <a class="nav-link active" aria-current="page" href="mekanizmalar.html">Mekanizmalar</a>
+        <a class="nav-link" href="komplikasyonlar.html">Komplikasyonlar</a>
+        <a class="nav-link" href="bezeller.html">Bezeller</a>
+      </nav>
+      <a class="topbar-index" href="komplikasyonlar.html">KOMPLİKASYONLAR <span>↘</span></a>
+    </header>
+
+    <main class="page-wrap content-section">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-mark"></span> SAATİN KALBİ</p>
+          <h1>Mekanizmalar</h1>
+        </div>
+        <p class="section-description">Kurmalı, otomatik ya da kuvars: mekanizma, saatin nasıl çalıştığını ve hassasiyetini belirleyen temel motordur. Popüler kalibreleri inceleyin ve filtreleyin.</p>
+      </header>
+
+      <div class="search-panel">
+        <label class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Mekanizmalarda ara</span>
+          <input id="movement-search" type="search" placeholder="Mekanizma veya özellik ara..." autocomplete="off">
+        </label>
+        <label class="filter-label">Menşei
+          <select id="origin-filter" aria-label="Menşeine göre filtrele">
+            <option value="">Tüm menşeler</option>
+            <option value="Japonya">Japonya</option>
+            <option value="İsviçre">İsviçre</option>
+          </select>
+        </label>
+        <label class="filter-label">Güç
+          <select id="reserve-filter" aria-label="Güç rezervine göre filtrele">
+            <option value="">Tüm güç rezervleri</option>
+            <option value="medium">40 saatten az</option>
+            <option value="long">40 saat ve üzeri</option>
+            <option value="battery">Pilli (Kuvars)</option>
+          </select>
+        </label>
+        <label class="filter-label">Marka
+          <select id="brand-filter" aria-label="Markaya göre filtrele">
+            <option value="">Tüm markalar</option>
+            <option value="Seiko">Seiko</option>
+            <option value="ETA">ETA</option>
+            <option value="Ronda">Ronda</option>
+            <option value="Miyota">Miyota</option>
+          </select>
+        </label>
+        <label class="filter-label">Üretici
+          <select id="maker-filter" aria-label="Üreticiye göre filtrele">
+            <option value="">Tüm üreticiler</option>
+            <option value="Seiko Instruments">Seiko Instruments</option>
+            <option value="ETA SA">ETA SA</option>
+            <option value="Ronda AG">Ronda AG</option>
+            <option value="Miyota / Citizen">Miyota / Citizen</option>
+          </select>
+        </label>
+        <p class="result-count" id="movement-count" aria-live="polite"></p>
+      </div>
+
+      <div class="card-grid movement-grid" id="movement-grid">
+        <article class="info-card movement-card" data-origin="Japonya" data-reserve="long" data-reserve-hours="41" data-brand="Seiko" data-maker="Seiko Instruments" data-search="Seiko NH35A otomatik Japonya hacking elle kurma tarih 24 taş 21600">
+          <div class="card-meta"><span>SEIKO · NH SERİSİ</span><span>01 / 08</span></div>
+          <h3>NH35A</h3>
+          <p class="card-subtitle">Otomatik · Tarih Göstergeli</p>
+          <p class="card-description">Dünya genelinde bağımsız saat üreticileri ve mikro markalar tarafından en çok güvenilen, sağlam çift yönlü Magic Lever kurma sistemli Japon kalibresi.</p>
+          <div class="card-features">
+            <span class="feature-tag">24 Taş</span>
+            <span class="feature-tag">21.600 BPH</span>
+            <span class="feature-tag">Hacking</span>
+            <span class="feature-tag">Elle Kurma</span>
+          </div>
+          <div class="card-specs"><span>Menşei: Japonya</span><span>Güç: ≈ 41 saat</span></div>
+          <button class="card-link" type="button" popovertarget="movement-nh35">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card movement-card" data-origin="Japonya" data-reserve="long" data-reserve-hours="41" data-brand="Seiko" data-maker="Seiko Instruments" data-search="Seiko NH36A otomatik Japonya gün tarih day date 24 taş 21600">
+          <div class="card-meta"><span>SEIKO · NH SERİSİ</span><span>02 / 08</span></div>
+          <h3>NH36A</h3>
+          <p class="card-subtitle">Otomatik · Gün ve Tarih Göstergeli</p>
+          <p class="card-description">NH35 kalibresinin çift dilli gün çarkı eklenmiş versiyonu. Günlük kullanımda hem haftanın gününü hem ayın tarihini tek bakışta sunan dayanıklı mekanik yapı.</p>
+          <div class="card-features">
+            <span class="feature-tag">24 Taş</span>
+            <span class="feature-tag">21.600 BPH</span>
+            <span class="feature-tag">Çift Dil</span>
+            <span class="feature-tag">Diashock</span>
+          </div>
+          <div class="card-specs"><span>Menşei: Japonya</span><span>Güç: ≈ 41 saat</span></div>
+          <button class="card-link" type="button" popovertarget="movement-nh36">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card movement-card" data-origin="İsviçre" data-reserve="medium" data-reserve-hours="38" data-brand="ETA" data-maker="ETA SA" data-search="ETA 2824-2 otomatik İsviçre tarih hack elle kurma 25 taş 28800 akıcı saniye">
+          <div class="card-meta"><span>ETA · 2800 SERİSİ</span><span>03 / 08</span></div>
+          <h3>2824-2</h3>
+          <p class="card-subtitle">Otomatik · Yüksek Frekans (4 Hz)</p>
+          <p class="card-description">İsviçre saatçiliğinin efsanevi referans kalibresi. Saniyede 8 vuruş yapan 28.800 frekansı ile son derece akıcı ve kesintisiz bir saniye ibresi akışı sunar.</p>
+          <div class="card-features">
+            <span class="feature-tag">25 Taş</span>
+            <span class="feature-tag">28.800 BPH</span>
+            <span class="feature-tag">Incabloc</span>
+            <span class="feature-tag">Swiss Made</span>
+          </div>
+          <div class="card-specs"><span>Menşei: İsviçre</span><span>Güç: ≈ 38 saat</span></div>
+          <button class="card-link" type="button" popovertarget="movement-eta2824">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card movement-card" data-origin="İsviçre" data-reserve="long" data-reserve-hours="42" data-brand="ETA" data-maker="ETA SA" data-search="ETA 2892-A2 otomatik İsviçre tarih ince profil 21 taş 28800 lüks taban">
+          <div class="card-meta"><span>ETA · 2800 SERİSİ</span><span>04 / 08</span></div>
+          <h3>2892-A2</h3>
+          <p class="card-subtitle">Otomatik · Ekstra İnce Profil (3.6 mm)</p>
+          <p class="card-description">Omega, IWC ve Breitling gibi üst segment markaların da temel aldığı, ince gövdesi ve yüksek verimli bilyalı rulman rotoruyla bilinen prestijli kalibre.</p>
+          <div class="card-features">
+            <span class="feature-tag">21 Taş</span>
+            <span class="feature-tag">28.800 BPH</span>
+            <span class="feature-tag">3.6 mm Kalınlık</span>
+            <span class="feature-tag">Modüler</span>
+          </div>
+          <div class="card-specs"><span>Menşei: İsviçre</span><span>Güç: ≈ 42 saat</span></div>
+          <button class="card-link" type="button" popovertarget="movement-eta2892">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card movement-card" data-origin="İsviçre" data-reserve="battery" data-brand="Ronda" data-maker="Ronda AG" data-search="Ronda 515 kuvars quartz İsviçre pilli tarih 1 taş">
+          <div class="card-meta"><span>RONDA · 500 SERİSİ</span><span>05 / 08</span></div>
+          <h3>515</h3>
+          <p class="card-subtitle">Kuvars · Yüksek Torklu Motor</p>
+          <p class="card-description">Günlük kullanım saatleri için geliştirilmiş, yüksek darbe dayanımına ve ağır ibreleri dahi hassasiyetle hareket ettirebilen güçlü bir step motora sahip İsviçre kuvarsı.</p>
+          <div class="card-features">
+            <span class="feature-tag">1 Taş</span>
+            <span class="feature-tag">32.768 Hz</span>
+            <span class="feature-tag">Renata 371 Pil</span>
+            <span class="feature-tag">Düşük Tüketim</span>
+          </div>
+          <div class="card-specs"><span>Menşei: İsviçre</span><span>Güç: Pilli (≈ 45 Ay)</span></div>
+          <button class="card-link" type="button" popovertarget="movement-ronda515">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card movement-card" data-origin="İsviçre" data-reserve="battery" data-brand="Ronda" data-maker="Ronda AG" data-search="Ronda 715 kuvars quartz İsviçre pilli gün tarih 5 taş 60 ay pil">
+          <div class="card-meta"><span>RONDA · 700 SERİSİ</span><span>06 / 08</span></div>
+          <h3>715</h3>
+          <p class="card-subtitle">Kuvars · 5 Taşlı Premium Kalibre</p>
+          <p class="card-description">Altın kaplama şasisi, 5 adet sentetik taş yatağı ve 5 yıla (60 ay) varan rekor pil ömrüyle lüks kuvars saatlerin vazgeçilmez mekanik tabanlı pilli kalibresi.</p>
+          <div class="card-features">
+            <span class="feature-tag">5 Taş</span>
+            <span class="feature-tag">Altın Kaplama</span>
+            <span class="feature-tag">60 Ay Pil</span>
+            <span class="feature-tag">Güç Tasarrufu</span>
+          </div>
+          <div class="card-specs"><span>Menşei: İsviçre</span><span>Güç: Pilli (≈ 60 Ay)</span></div>
+          <button class="card-link" type="button" popovertarget="movement-ronda715">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card movement-card" data-origin="Japonya" data-reserve="long" data-reserve-hours="42" data-brand="Miyota" data-maker="Miyota / Citizen" data-search="Miyota 8215 otomatik Japonya tarih 21 taş 21600 citizen parashock">
+          <div class="card-meta"><span>MIYOTA · 8000 SERİSİ</span><span>07 / 08</span></div>
+          <h3>8215</h3>
+          <p class="card-subtitle">Otomatik · Parashock Korumalı</p>
+          <p class="card-description">Citizen bünyesindeki Miyota tarafından 1977'den bu yana milyonlarca üretilen, aşırı zorlu koşullara dayanıklı tek yönlü kurma rotoruyla ünlü Japon iş atı.</p>
+          <div class="card-features">
+            <span class="feature-tag">21 Taş</span>
+            <span class="feature-tag">21.600 BPH</span>
+            <span class="feature-tag">Parashock</span>
+            <span class="feature-tag">Elle Kurma</span>
+          </div>
+          <div class="card-specs"><span>Menşei: Japonya</span><span>Güç: ≈ 42 saat</span></div>
+          <button class="card-link" type="button" popovertarget="movement-miyota8215">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <article class="info-card movement-card" data-origin="Japonya" data-reserve="long" data-reserve-hours="42" data-brand="Miyota" data-maker="Miyota / Citizen" data-search="Miyota 9015 otomatik Japonya ince profil tarih 24 taş yüksek vuruş 28800">
+          <div class="card-meta"><span>MIYOTA · 9000 SERİSİ</span><span>08 / 08</span></div>
+          <h3>9015</h3>
+          <p class="card-subtitle">Otomatik · Yüksek Frekans & İnce (3.9 mm)</p>
+          <p class="card-description">ETA 2824'e doğrudan Japon rakip olarak geliştirilen modern kalibre; 28.800 yüksek vuruş frekansı, 3.90 mm inceliği ve bilyalı rulman rotoruyla premium segmentte parlar.</p>
+          <div class="card-features">
+            <span class="feature-tag">24 Taş</span>
+            <span class="feature-tag">28.800 BPH</span>
+            <span class="feature-tag">3.9 mm İnce</span>
+            <span class="feature-tag">Bilyalı Rulman</span>
+          </div>
+          <div class="card-specs"><span>Menşei: Japonya</span><span>Güç: ≈ 42 saat</span></div>
+          <button class="card-link" type="button" popovertarget="movement-miyota9015">Teknik detayları incele <span>↗</span></button>
+        </article>
+
+        <p class="empty-state" id="movement-empty" hidden>Bu filtreleme kriterlerine uygun mekanizma bulunamadı.</p>
+      </div>
+
+      <!-- POPOVER PANELS -->
+      <div class="popover-panel" id="movement-nh35" popover>
+        <button class="popover-close" type="button" popovertarget="movement-nh35" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">SEIKO · NH SERİSİ</p>
+        <h3>NH35A</h3>
+        <p class="popover-lead">Mikro-markalar ve modifikasyon dünyasında en yaygın tercih edilen, sağlam otomatik kalibre.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>Japonya</dd></div>
+          <div><dt>Üretici</dt><dd>Seiko Instruments Inc. (SII)</dd></div>
+          <div><dt>Kurma</dt><dd>Otomatik ve elle kurma (Hacking destekli)</dd></div>
+          <div><dt>Güç rezervi</dt><dd>Yaklaşık 41 saat</dd></div>
+          <div><dt>Taş sayısı</dt><dd>24 Sentetik Yakut</dd></div>
+          <div><dt>Frekans</dt><dd>21.600 BPH (3 Hz / saniyede 6 vuruş)</dd></div>
+          <div><dt>İşlevler</dt><dd>Saat, dakika, merkezi saniye ve hızlı tarih</dd></div>
+          <div><dt>Çap / Kalınlık</dt><dd>27.4 mm / 5.32 mm</dd></div>
+        </dl>
+        <p class="popover-note">Saniye durdurma (hacking) özelliği, kurma kolu 2. konuma çekildiğinde saniye ibresini kilitleyerek saatin hassas bir zaman kaynağıyla senkronize edilmesini sağlar.</p>
+      </div>
+
+      <div class="popover-panel" id="movement-nh36" popover>
+        <button class="popover-close" type="button" popovertarget="movement-nh36" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">SEIKO · NH SERİSİ</p>
+        <h3>NH36A</h3>
+        <p class="popover-lead">NH35 mimarisini hem gün hem tarih komplikasyonuyla tamamlayan çift takvimli otomatik mekanizma.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>Japonya</dd></div>
+          <div><dt>Üretici</dt><dd>Seiko Instruments Inc. (SII)</dd></div>
+          <div><dt>Kurma</dt><dd>Otomatik ve elle kurma (Hacking destekli)</dd></div>
+          <div><dt>Güç rezervi</dt><dd>Yaklaşık 41 saat</dd></div>
+          <div><dt>Taş sayısı</dt><dd>24 Taş</dd></div>
+          <div><dt>Frekans</dt><dd>21.600 BPH (3 Hz)</dd></div>
+          <div><dt>İşlevler</dt><dd>Saat, dakika, saniye, gün (iki dilli) ve tarih</dd></div>
+          <div><dt>Çap / Kalınlık</dt><dd>27.4 mm / 5.32 mm</dd></div>
+        </dl>
+        <p class="popover-note">Gün diskleri İngilizce/İspanyolca, İngilizce/Arapça veya İngilizce/Japonca gibi iki dilli üretilir. Saat 21:00 ile 03:00 arasında takvim ayarı yapılmamalıdır.</p>
+      </div>
+
+      <div class="popover-panel" id="movement-eta2824" popover>
+        <button class="popover-close" type="button" popovertarget="movement-eta2824" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">ETA · 2800 SERİSİ</p>
+        <h3>2824-2</h3>
+        <p class="popover-lead">İsviçre saat endüstrisinin 1970'lerden bu yana en bilinen ve güvenilen otomatik iş atı kalibresi.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>İsviçre</dd></div>
+          <div><dt>Üretici</dt><dd>ETA SA Manufacture Horlogère Suisse</dd></div>
+          <div><dt>Kurma</dt><dd>Otomatik ve elle kurma</dd></div>
+          <div><dt>Güç rezervi</dt><dd>Yaklaşık 38 saat</dd></div>
+          <div><dt>Taş sayısı</dt><dd>25 Taş</dd></div>
+          <div><dt>Frekans</dt><dd>28.800 BPH (4 Hz / saniyede 8 vuruş)</dd></div>
+          <div><dt>İşlevler</dt><dd>Saat, dakika, akıcı saniye ve hızlı tarih</dd></div>
+          <div><dt>Şok Sistemi</dt><dd>Incabloc veya Novodiac</dd></div>
+        </dl>
+        <p class="popover-note">28.800 BPH yüksek frekansı, saniye ibresinin kadran üzerinde pürüzsüz ve akıcı biçimde kaymasını sağlar. Standard, Elaboré, Top ve Chronomètre olmak üzere 4 kalite sınıfı bulunur.</p>
+      </div>
+
+      <div class="popover-panel" id="movement-eta2892" popover>
+        <button class="popover-close" type="button" popovertarget="movement-eta2892" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">ETA · 2800 SERİSİ</p>
+        <h3>2892-A2</h3>
+        <p class="popover-lead">3.6 mm inceliğindeki gövdesiyle lüks ve komplikasyon modülleri taşıyan saatlerin gözde İsviçre tabanı.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>İsviçre</dd></div>
+          <div><dt>Üretici</dt><dd>ETA SA</dd></div>
+          <div><dt>Kurma</dt><dd>Otomatik ve çift yönlü rotor kurma</dd></div>
+          <div><dt>Güç rezervi</dt><dd>Yaklaşık 42 saat</dd></div>
+          <div><dt>Taş sayısı</dt><dd>21 Taş</dd></div>
+          <div><dt>Frekans</dt><dd>28.800 BPH (4 Hz)</dd></div>
+          <div><dt>Profil Kalınlığı</dt><dd>Yalnızca 3.60 mm</dd></div>
+          <div><dt>Kullanım</dt><dd>Omega, Breitling, IWC ve Cartier taban kalibreleri</dd></div>
+        </dl>
+        <p class="popover-note">İnce mimarisi sayesinde üzerine kronograf veya GMT modülleri eklense bile saatin toplam kasa yüksekliği zarif sınırda tutulabilir.</p>
+      </div>
+
+      <div class="popover-panel" id="movement-ronda515" popover>
+        <button class="popover-close" type="button" popovertarget="movement-ronda515" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">RONDA · 500 SERİSİ</p>
+        <h3>515</h3>
+        <p class="popover-lead">İsviçre üretimi, yüksek enerji verimliliğine ve hassas kuvars kristaline sahip analog kalibre.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>İsviçre / Swiss Parts</dd></div>
+          <div><dt>Üretici</dt><dd>Ronda AG</dd></div>
+          <div><dt>Çalışma tipi</dt><dd>Kuvars (32.768 Hz kristal osilatör · Pil)</dd></div>
+          <div><dt>Pil Tipi / Ömrü</dt><dd>Renata 371 / Yaklaşık 45 ay (3.7 yıl)</dd></div>
+          <div><dt>Taş sayısı</dt><dd>1 Taş</dd></div>
+          <div><dt>Aylık Sapma</dt><dd>-10 / +20 saniye / ay</dd></div>
+        </dl>
+        <p class="popover-note">Kuvars mekanizmalar pil enerjisiyle saniyede bir adım atar (deadbeat second). Mekanik zemberek içermez ve darbelere karşı çok yüksek tolerans gösterir.</p>
+      </div>
+
+      <div class="popover-panel" id="movement-ronda715" popover>
+        <button class="popover-close" type="button" popovertarget="movement-ronda715" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">RONDA · 700 SERİSİ</p>
+        <h3>715</h3>
+        <p class="popover-lead">5 taşlı yatak yapısı ve 5 yıla varan pil ömrüyle premium kuvars saatlerin vazgeçilmez mekanizması.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>İsviçre</dd></div>
+          <div><dt>Üretici</dt><dd>Ronda AG</dd></div>
+          <div><dt>Çalışma tipi</dt><dd>Kuvars · Güç tasarruf modüllü</dd></div>
+          <div><dt>Pil Ömrü</dt><dd>Yaklaşık 60 ay (5 yıl)</dd></div>
+          <div><dt>Taş sayısı</dt><dd>5 Taş (Altın kaplama versiyon)</dd></div>
+          <div><dt>İşlevler</dt><dd>Saat, dakika, saniye ve hızlı tarih</dd></div>
+        </dl>
+        <p class="popover-note">Tepesi çekildiğinde pili devreden çıkaran güç tasarrufu özelliği sayesinde mağaza ve depolama süreçlerinde enerji tüketimini %70 oranında azaltır.</p>
+      </div>
+
+      <div class="popover-panel" id="movement-miyota8215" popover>
+        <button class="popover-close" type="button" popovertarget="movement-miyota8215" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">MIYOTA · 8000 SERİSİ</p>
+        <h3>8215</h3>
+        <p class="popover-lead">Citizen grubunun 1977'den bu yana ürettiği, dünyada en çok satan mekanik kalibrelerden biri.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>Japonya</dd></div>
+          <div><dt>Üretici</dt><dd>Miyota (Citizen Watch Co.)</dd></div>
+          <div><dt>Kurma</dt><dd>Otomatik (Tek yönlü rotor kurma)</dd></div>
+          <div><dt>Güç rezervi</dt><dd>Yaklaşık 42 saat</dd></div>
+          <div><dt>Taş sayısı</dt><dd>21 Taş</dd></div>
+          <div><dt>Frekans</dt><dd>21.600 BPH (3 Hz)</dd></div>
+          <div><dt>Darbe Koruması</dt><dd>Parashock patentli sistem</dd></div>
+        </dl>
+        <p class="popover-note">Tek yönlü kurma rotoru serbest yönde dönerken hızlı bir devir alır ve bilekte karakteristik bir mekanik titreşim hissi yaratabilir.</p>
+      </div>
+
+      <div class="popover-panel" id="movement-miyota9015" popover>
+        <button class="popover-close" type="button" popovertarget="movement-miyota9015" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow">MIYOTA · 9000 SERİSİ</p>
+        <h3>9015</h3>
+        <p class="popover-lead">ETA 2824 kalitesini Japon üretim teknolojisiyle buluşturan 28.800 BPH yüksek frekanslı ince kalibre.</p>
+        <dl class="detail-list">
+          <div><dt>Menşei</dt><dd>Japonya</dd></div>
+          <div><dt>Üretici</dt><dd>Miyota (Citizen Watch Co.)</dd></div>
+          <div><dt>Kurma</dt><dd>Otomatik ve elle kurma (Hacking destekli)</dd></div>
+          <div><dt>Güç rezervi</dt><dd>Yaklaşık 42 saat</dd></div>
+          <div><dt>Taş sayısı</dt><dd>24 Taş</dd></div>
+          <div><dt>Frekans</dt><dd>28.800 BPH (4 Hz)</dd></div>
+          <div><dt>Kalınlık</dt><dd>3.90 mm (Ekstra ince profil)</dd></div>
+        </dl>
+        <p class="popover-note">3.9 mm inceliği ve 4 Hz yüksek frekansıyla hem dress watch hem modern spor saatler için ideal bir fiyat/performans dengesi sunar.</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-left">
+        <span class="footer-mark" aria-hidden="true">✳</span>
+        <p>Saatlerin iç dünyasına dair bağımsız ve teknik rehber.</p>
+      </div>
+      <nav class="footer-links" aria-label="Alt gezinme">
+        <a href="index.html">Anasayfa</a>
+        <a href="mekanizmalar.html">Mekanizmalar</a>
+        <a href="komplikasyonlar.html">Komplikasyonlar</a>
+        <a href="bezeller.html">Bezeller</a>
+      </nav>
+    </footer>
+  </body>
+</html>
