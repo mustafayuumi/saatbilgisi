@@ -1,144 +1,165 @@
 <!doctype html>
 <html lang="tr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f8f8f7">
-    <meta name="description" content="Saat mekanizmaları, komplikasyonları ve bezel kullanımı hakkında kapsamlı ve anlaşılır bir rehber.">
-    <title>Saatler — Mekanizmalar, Komplikasyonlar ve Bezel Rehberi</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <header class="topbar">
-      <a class="wordmark" href="index.html" aria-label="Saatler Rehberi Anasayfa">Saatler <span>· Rehber</span></a>
-      <nav class="main-nav" aria-label="Ana gezinme">
-        <a class="nav-link active" aria-current="page" href="index.html">Anasayfa</a>
-        <a class="nav-link" href="mekanizmalar.html">Mekanizmalar</a>
-        <a class="nav-link" href="komplikasyonlar.html">Komplikasyonlar</a>
-        <a class="nav-link" href="bezeller.html">Bezeller</a>
-      </nav>
-      <a class="topbar-index" href="mekanizmalar.html">KATALOG <span>↘</span></a>
-    </header>
 
-    <main>
-      <!-- HERO SECTION WITH REALISTIC CHARCOAL WATCH MECHANISM -->
-      <section class="home-hero" aria-labelledby="hero-title">
-        <div class="hero-art-container" aria-label="Mekanik saat kalibresinin karakalem teknik kesit çizimi ve çalışan mekanizması">
-          <div class="workbench-header">
-            <span class="workbench-tag">TEKNİK KESİT · MEKANİK SAAT KALİBRESİ</span>
-            <div class="workbench-scale-badge" title="Mekanik bir kol saati kalibresinin yaklaşık gerçek boyutu">
-              <span class="scale-circle-1to1" style="width: 20px; height: 20px;" aria-hidden="true"></span>
-              <span>1:1 GERÇEK ÇAP (Ø 27.4 mm)</span>
-            </div>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f7">
+  <meta name="description"
+    content="Saat mekanizmaları, komplikasyonları ve bezel kullanımı hakkında kapsamlı ve anlaşılır bir rehber.">
+  <title>Saatler — Mekanizmalar, Komplikasyonlar ve Bezel Rehberi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
 
-          <div class="canvas-wrapper">
-            <canvas id="zemberek-canvas" width="560" height="560" role="img" aria-label="Kasa çerçevesi içinde tam mekanik saat kalibresi ve kurma kolu"></canvas>
-          </div>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="index.html" aria-label="Saatler Rehberi Anasayfa">Saatler <span>· Rehber</span></a>
+    <nav class="main-nav" aria-label="Ana gezinme">
+      <a class="nav-link active" aria-current="page" href="index.html">Anasayfa</a>
+      <a class="nav-link" href="mekanizmalar.html">Mekanizmalar</a>
+      <a class="nav-link" href="komplikasyonlar.html">Komplikasyonlar</a>
+      <a class="nav-link" href="bezeller.html">Bezeller</a>
+    </nav>
+    <a class="topbar-index" href="mekanizmalar.html">KATALOG <span>↘</span></a>
+  </header>
 
-          <div class="workbench-controls">
-            <div class="control-buttons">
-              <button id="btn-wind" class="btn-workbench" type="button" title="Zembereği kurarak mekanizmaya güç depolayın">⟳ Kur</button>
-              <button id="btn-release" class="btn-workbench active" type="button" title="Ağır çekimde dişlilerin ve eşapmanın çalışmasını izleyin">⏱ Ağır Çekim</button>
-              <button id="btn-auto" class="btn-workbench" type="button" title="Normal mekanizma çalışma hızı">▶ Canlı Mekanizma</button>
-            </div>
-            <div class="state-indicator">
-              <span id="zemberek-state-text">Ağır Çekim (0.25x Detay)</span> · 
-              Rezerv: <strong id="zemberek-reserve-text">42 Saat</strong>
-            </div>
+  <main>
+    <!-- HERO SECTION WITH REALISTIC CHARCOAL WATCH MECHANISM -->
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="hero-art-container"
+        aria-label="Mekanik saat kalibresinin karakalem teknik kesit çizimi ve çalışan mekanizması">
+        <div class="workbench-header">
+          <span class="workbench-tag">TEKNİK KESİT · MEKANİK SAAT KALİBRESİ</span>
+          <div class="workbench-scale-badge" title="Mekanik bir kol saati kalibresinin yaklaşık gerçek boyutu">
+            <span class="scale-circle-1to1" style="width: 20px; height: 20px;" aria-hidden="true"></span>
+            <span>1:1 GERÇEK ÇAP (Ø 27.4 mm)</span>
           </div>
         </div>
 
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-mark"></span> MEKANİK SAATLERİ ANLAMAK İÇİN</p>
-          <h1 id="hero-title">Zamanın <span>Mekanik</span> Kalbi</h1>
-          <p class="hero-intro">Saatler, yalnızca zamanı ölçen birer gösterge değil; mikron düzeyinde tasarlanmış yüzlerce parçanın kusursuz dengesidir. Sol tarafta gördüğünüz mekanik kalibrenin zemberek tamburunda depolanan potansiyel enerjiden eşapman maşası ve balans çarkının saniyelik salınımlarına kadar saatlerin büyüleyici dünyasını keşfedin.</p>
-          
-          <div class="hero-actions">
-            <a class="btn-primary" href="mekanizmalar.html">Mekanizmaları Keşfet <span>↘</span></a>
-            <a class="btn-secondary" href="komplikasyonlar.html">Komplikasyonlar</a>
-            <a class="btn-secondary" href="bezeller.html">Bezel Rehberi</a>
-          </div>
-
-          <div class="hero-specs-box">
-            <div class="hero-spec-item">
-              <dt>Kalibre Çapı</dt>
-              <dd>Ø 27.4 mm</dd>
-            </div>
-            <div class="hero-spec-item">
-              <dt>Vuruş Hızı</dt>
-              <dd>28.800 BPH (4 Hz)</dd>
-            </div>
-            <div class="hero-spec-item">
-              <dt>Taş Sayısı</dt>
-              <dd>25 Yakut</dd>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PORTAL SECTIONS -->
-      <section class="portal-section page-wrap" aria-labelledby="portal-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow"><span class="eyebrow-mark"></span> REHBER İÇERİĞİ</p>
-            <h2 id="portal-title">Saat Dünyasının Temel Başlıkları</h2>
-          </div>
-          <p class="section-description">Ayrı sayfalarda derlenmiş detaylı teknik tablolar, arama araçları ve çalışma prensipleri.</p>
+        <div class="canvas-wrapper">
+          <canvas id="zemberek-canvas" width="560" height="560" role="img"
+            aria-label="Kasa çerçevesi içinde tam mekanik saat kalibresi ve kurma kolu"></canvas>
         </div>
 
-        <div class="portal-grid">
-          <article class="portal-card">
-            <div class="portal-card-header">
-              <span class="eyebrow">01 / REHBER</span>
-              <span class="portal-num">8 KALİBRE</span>
-            </div>
-            <h3>Mekanizmalar</h3>
-            <p>Seiko NH35/36, ETA 2824/2892, Ronda 515/715 ve Miyota kalibreleri. Menşei, güç rezervi, taş sayısı ve vuruş hızına göre filtreleyin.</p>
-            <a class="portal-link" href="mekanizmalar.html">Kataloğu Aç <span>↘</span></a>
-          </article>
-
-          <article class="portal-card">
-            <div class="portal-card-header">
-              <span class="eyebrow">02 / REHBER</span>
-              <span class="portal-num">5 İŞLEV</span>
-            </div>
-            <h3>Komplikasyonlar</h3>
-            <p>Zaman gösteriminin ötesi: Yerçekimi etkisini gideren Tourbillon, hassas süre ölçen Chronograph ve yüzyılları sayan Perpetual Calendar.</p>
-            <a class="portal-link" href="komplikasyonlar.html">Komplikasyonları Gör <span>↘</span></a>
-          </article>
-
-          <article class="portal-card">
-            <div class="portal-card-header">
-              <span class="eyebrow">03 / REHBER</span>
-              <span class="portal-num">3 TÜR</span>
-            </div>
-            <h3>Bezel Rehberi</h3>
-            <p>Dalgıç bezeli ile geçen süre takibi, takimetre ile hız hesabı ve GMT ile ikinci saat dilimi okuma adımları.</p>
-            <a class="portal-link" href="bezeller.html">Rehberi İncele <span>↘</span></a>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-left">
-        <span class="footer-mark" aria-hidden="true">✳</span>
-        <div>
-          <p>Saatlerin iç dünyasına dair bağımsız ve teknik rehber.</p>
-          <p class="footer-disclaimer">Bu site eğitim amaçlı hazırlanmış bir içeriktir.</p>
+        <div class="workbench-controls">
+          <div class="control-buttons">
+            <button id="btn-wind" class="btn-workbench" type="button"
+              title="Zembereği kurarak mekanizmaya güç depolayın">⟳ Kur</button>
+            <button id="btn-release" class="btn-workbench active" type="button"
+              title="Ağır çekimde dişlilerin ve eşapmanın çalışmasını izleyin">⏱ Ağır Çekim</button>
+            <button id="btn-auto" class="btn-workbench" type="button" title="Normal mekanizma çalışma hızı">▶ Canlı
+              Mekanizma</button>
+          </div>
+          <div class="state-indicator">
+            <span id="zemberek-state-text">Ağır Çekim (0.25x Detay)</span> ·
+            Rezerv: <strong id="zemberek-reserve-text">42 Saat</strong>
+          </div>
         </div>
       </div>
-      <nav class="footer-links" aria-label="Alt gezinme">
-        <a href="index.html">Anasayfa</a>
-        <a href="mekanizmalar.html">Mekanizmalar</a>
-        <a href="komplikasyonlar.html">Komplikasyonlar</a>
-        <a href="bezeller.html">Bezeller</a>
-      </nav>
-    </footer>
-  </body>
+
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-mark"></span> MEKANİK SAATLERİ ANLAMAK İÇİN</p>
+        <h1 id="hero-title">Zamanın <span>Mekanik</span> Kalbi</h1>
+        <p class="hero-intro">Saatler, yalnızca zamanı ölçen birer gösterge değil; İnsanların zamana bağımlı
+          ihtiyaçlarını yönetmesine hizmet eden mikron düzeyinde tasarlanmış yüzlerce parçanın kusursuz dengesiyle
+          çalışan küçük makinelerdir.
+          <br><br>
+          Sol tarafta gördüğünüz mekanik kalibrenin zemberek tamburunda depolanan potansiyel enerjiden eşapman maşası ve
+          balans çarkının saniyelik salınımlarına kadar saatlerin büyüleyici dünyasını keşfedin.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="mekanizmalar.html">Mekanizmaları Keşfet <span>↘</span></a>
+          <a class="btn-secondary" href="komplikasyonlar.html">Komplikasyonlar</a>
+          <a class="btn-secondary" href="bezeller.html">Bezel Rehberi</a>
+        </div>
+
+        <div class="hero-specs-box">
+          <div class="hero-spec-item">
+            <dt>Kalibre Çapı</dt>
+            <dd>Ø 27.4 mm</dd>
+          </div>
+          <div class="hero-spec-item">
+            <dt>Vuruş Hızı</dt>
+            <dd>28.800 BPH (4 Hz)</dd>
+          </div>
+          <div class="hero-spec-item">
+            <dt>Taş Sayısı</dt>
+            <dd>25 Yakut</dd>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAL SECTIONS -->
+    <section class="portal-section page-wrap" aria-labelledby="portal-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-mark"></span> REHBER İÇERİĞİ</p>
+          <h2 id="portal-title">Saat Dünyasının Temel Başlıkları</h2>
+        </div>
+        <p class="section-description">Ayrı sayfalarda derlenmiş detaylı teknik tablolar, arama araçları ve çalışma
+          prensipleri.</p>
+      </div>
+
+      <div class="portal-grid">
+        <article class="portal-card">
+          <div class="portal-card-header">
+            <span class="eyebrow">01 / REHBER</span>
+            <span class="portal-num">8 KALİBRE</span>
+          </div>
+          <h3>Mekanizmalar</h3>
+          <p>Seiko NH35/36, ETA 2824/2892, Ronda 515/715 ve Miyota kalibreleri. Menşei, güç rezervi, taş sayısı ve vuruş
+            hızına göre filtreleyin.</p>
+          <a class="portal-link" href="mekanizmalar.html">Kataloğu Aç <span>↘</span></a>
+        </article>
+
+        <article class="portal-card">
+          <div class="portal-card-header">
+            <span class="eyebrow">02 / REHBER</span>
+            <span class="portal-num">5 İŞLEV</span>
+          </div>
+          <h3>Komplikasyonlar</h3>
+          <p>Zaman gösteriminin ötesi: Yerçekimi etkisini gideren Tourbillon, hassas süre ölçen Chronograph ve
+            yüzyılları sayan Perpetual Calendar.</p>
+          <a class="portal-link" href="komplikasyonlar.html">Komplikasyonları Gör <span>↘</span></a>
+        </article>
+
+        <article class="portal-card">
+          <div class="portal-card-header">
+            <span class="eyebrow">03 / REHBER</span>
+            <span class="portal-num">3 TÜR</span>
+          </div>
+          <h3>Bezel Rehberi</h3>
+          <p>Dalgıç bezeli ile geçen süre takibi, takimetre ile hız hesabı ve GMT ile ikinci saat dilimi okuma adımları.
+          </p>
+          <a class="portal-link" href="bezeller.html">Rehberi İncele <span>↘</span></a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span class="footer-mark" aria-hidden="true">✳</span>
+      <div>
+        <p>Saatlerin iç dünyasına dair bağımsız ve teknik rehber.</p>
+        <p class="footer-disclaimer">Bu site eğitim amaçlı hazırlanmış bir içeriktir.</p>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Alt gezinme">
+      <a href="index.html">Anasayfa</a>
+      <a href="mekanizmalar.html">Mekanizmalar</a>
+      <a href="komplikasyonlar.html">Komplikasyonlar</a>
+      <a href="bezeller.html">Bezeller</a>
+    </nav>
+  </footer>
+</body>
+
 </html>
