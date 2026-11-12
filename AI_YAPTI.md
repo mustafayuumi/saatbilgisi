@@ -44,3 +44,21 @@
        - **Takimetre:** İstenen YouTube videosu (`https://www.youtube.com/embed/2e5vrBVNXzg?si=SLJd8jNTEXz963rz`) 16:9 responsive video çerçevesi ile entegre edildi.
        - **GMT Bezeli:** 24 saatlik ibre ve çift yönlü bezel ile 3 farklı zaman dilimini takip etme videosu.
      - Modal kapatıldığında YouTube videosunun arkaplanda ses çalmaya devam etmesini önleyen otomatik durdurma mekanizması (`script.js`) entegre edildi.
+
+
+7. **Ödev Kabul Kriterlerine Uygun "Hakkında" Sayfası (`hakkinda.html`):**
+   - **Kabul Kriteri 1 (Konuyu Seçme Gerekçesi):**
+     - Mekanik zeka ve mikro mühendislik mükemmeliyeti (pilsiz, mikron düzeyinde parçalarla zamanı bölme).
+     - Modern "kullan-at" kültürüne karşı sürdürülebilirlik ve nesiller boyu aktarılabilirlik.
+     - Türkçe kaynaklardaki ticari reklam kirliliği ve tarafsız, kapsamlı referans eksikliği.
+     - Soyut teorik bilgiyi modern web teknolojileriyle (Canvas simülasyonu, anlık arama) somutlaştırma vizyonu.
+   - **Kabul Kriteri 2 (Sitenin Ziyaretçiye Nasıl Yardımcı Olduğu):**
+     - Kapalı saat kasasının içini interaktif Canvas simülatörüyle açıp ağır çekimde izletme imkânı.
+     - 8 popüler kalibre için 4 kademeli filtreleme ile bilinçli saat seçimi ve karşılaştırma aracı.
+     - Tourbillon, Chronograph gibi karmaşık horolojik komplikasyonları sadeleştirerek anlatma.
+     - Bezellerin yalnızca süs olmadığını gösteren adım adım kullanım kılavuzları, matematiksel formüller ve entegre video eğitimleri.
+     - %100 reklamsız, hızlı, modern tipografili ve WAI-ARIA erişilebilir bağımsız bilgi erişimi.
+   - **Ödev Künyesi & Standartlar Tablosu:**
+     - Proje künyesi, teknik mimari (HTML5 Semantic, Responsive CSS3, Vanilla JS ES6+) ve kabul kriterleri karşılama durumunu belgeleyen tablo entegre edildi.
+   - **Navigasyon ve Footer Entegrasyonu:**
+     - `index.html`, `mekanizmalar.html`, `komplikasyonlar.html`, `bezeller.html` ve `hakkinda.html` sayfalarının üst menü ve alt footer bağlantılarına "Hakkında" sayfası aktif durum göstergeleriyle eklendi.
