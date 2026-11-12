@@ -959,6 +959,25 @@ function initWatchMovementCanvas() {
   requestAnimationFrame(animate);
 }
 
+// BEZEL VIDEO MODALS (Stop YouTube playback on modal close)
+function initBezelVideoModals() {
+  const modals = document.querySelectorAll(".bezel-video-panel");
+  if (!modals.length) return;
+
+  modals.forEach((modal) => {
+    modal.addEventListener("toggle", (event) => {
+      if (event.newState === "closed") {
+        const iframe = modal.querySelector("iframe");
+        if (iframe && iframe.src) {
+          const src = iframe.src;
+          iframe.src = "";
+          iframe.src = src;
+        }
+      }
+    });
+  });
+}
+
 // DOCUMENT READY INITIALIZATION
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize movement catalogue search & filters (mekanizmalar.html)
@@ -989,4 +1008,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize full mechanical watch movement canvas (index.html)
   initWatchMovementCanvas();
+
+  // Initialize bezel video modal handlers (bezeller.html)
+  initBezelVideoModals();
 });

@@ -742,88 +742,189 @@ h1, h2, h3, h4, p { margin-top: 0; }
   border-radius: 10px;
   background: var(--surface);
 }
-.bezel-visual {
+/* BEZEL PREVIEW & MEDIA SYSTEM */
+.bezel-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.bezel-preview-btn {
   position: relative;
-  display: grid;
-  width: min(100%, 280px);
+  display: block;
+  width: 100%;
   aspect-ratio: 1;
-  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #1a1624;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 12px 32px rgba(25, 18, 35, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.bezel-preview-btn:hover {
+  transform: translateY(-4px);
+  border-color: #a28ec4;
+  box-shadow: 0 18px 40px rgba(25, 18, 35, 0.24);
+}
+.bezel-preview-btn:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+.bezel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+.bezel-preview-btn:hover .bezel-image {
+  transform: scale(1.04);
+}
+.bezel-preview-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(20, 16, 28, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.bezel-preview-btn:hover .bezel-preview-badge {
+  background: rgba(45, 34, 65, 0.95);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-50%) scale(1.04);
+}
+.badge-icon {
+  display: inline-grid;
   place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  font-size: 9px;
+  line-height: 1;
+  padding-left: 1px;
+}
+.bezel-hint-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-secondary);
+  text-align: center;
+}
+.bezel-hint-text code {
+  background: var(--paper);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--line-light);
+  color: var(--purple-dark);
+}
+.bezel-detail-link {
+  margin-top: 18px;
+  padding: 13px 18px;
+  background: #faf9fc;
+  border: 1px solid var(--line-light);
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--purple-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.bezel-detail-link:hover {
+  background: var(--purple-light);
+  border-color: var(--purple);
+  color: var(--purple-dark);
+}
+.bezel-detail-link span {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--purple-dark);
-  box-shadow: 0 12px 32px rgba(35, 28, 50, 0.16);
-}
-.bezel-visual::before {
-  position: absolute;
-  inset: 8%;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 50%;
-  content: "";
-}
-.bezel-face {
-  position: relative;
-  display: flex;
-  width: 78%;
-  aspect-ratio: 1;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10% 12%;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
   color: #fff;
-  font-family: var(--mono);
   font-size: 10px;
-  font-weight: 500;
+  padding-left: 2px;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
-.bezel-face::before {
-  position: absolute;
-  inset: 7%;
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  content: "";
-}
-.bezel-face span:nth-child(2) { align-self: flex-end; }
-.bezel-face span:nth-child(3) { align-self: flex-end; }
-.bezel-face span:nth-child(4) { align-self: flex-start; }
-.bezel-face i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 33%;
-  background: #cfc2e6;
-  transform: translate(-50%, -100%) rotate(35deg);
-  transform-origin: bottom;
-}
-.tachy-visual {
-  background: #eae8ee;
-}
-.tachy-visual .bezel-face {
-  border-color: rgba(50, 40, 68, 0.7);
-  color: var(--purple-dark);
-  transform: rotate(26deg);
-}
-.tachy-visual .bezel-face::before {
-  border-color: rgba(50, 40, 68, 0.35);
-}
-.tachy-visual .bezel-face i {
+.bezel-detail-link:hover span {
+  transform: scale(1.1);
   background: var(--purple);
-  transform: translate(-50%, -100%) rotate(-18deg);
 }
-.gmt-visual {
-  background: #252230;
+
+/* BEZEL VIDEO POPOVER MODAL */
+.bezel-video-panel {
+  width: min(760px, calc(100% - 32px));
+  max-height: min(90vh, 860px);
 }
-.gmt-visual .bezel-face {
-  border-color: #bda7df;
-  color: #f1edfa;
-  transform: rotate(-18deg);
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 18px 0;
+  background: #0e0c14;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 32px rgba(20, 15, 30, 0.2);
 }
-.gmt-visual .bezel-face::before {
-  border-color: rgba(189, 167, 223, 0.45);
+.video-container.video-short {
+  max-width: 320px;
+  aspect-ratio: 9 / 16;
+  max-height: 520px;
+  margin: 18px auto;
 }
-.gmt-visual .bezel-face i {
-  background: #e59a68;
-  transform: translate(-50%, -100%) rotate(65deg);
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-notes {
+  margin: 16px 0 0;
+  padding: 16px 20px;
+  background: #faf9fc;
+  border: 1px solid var(--line-light);
+  border-radius: 6px;
+}
+.video-notes h4 {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--purple-dark);
+}
+.video-notes ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.video-notes li {
+  margin-bottom: 6px;
+}
+.video-notes li:last-child {
+  margin-bottom: 0;
 }
 .bezel-copy h3 {
   margin: 6px 0 14px;

@@ -36,15 +36,17 @@
       <div class="bezel-guides">
         <!-- 1. DALGIÇ BEZELİ -->
         <article class="bezel-guide">
-          <div class="bezel-visual dive-visual" aria-hidden="true">
-            <div class="bezel-face">
-              <span>▼</span>
-              <span>15</span>
-              <span>30</span>
-              <span>45</span>
-              <i></i>
-            </div>
+          <div class="bezel-preview-wrap">
+            <button class="bezel-preview-btn" type="button" popovertarget="bezel-modal-dive" aria-label="Dalgıç Bezeli videosunu ve detayını izle">
+              <img src="media/dalgic-bezel.jpg" alt="Dalgıç Bezeli (Diver's Bezel)" class="bezel-image" onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src='media/dalgic-bezel.png';}">
+              <div class="bezel-preview-badge">
+                <span class="badge-icon">▶</span>
+                <span class="badge-text">Kullanım Videosunu İzle</span>
+              </div>
+            </button>
+            <span class="bezel-hint-text">Görsel: <code>media/dalgic-bezel.jpg</code></span>
           </div>
+
           <div class="bezel-copy">
             <p class="eyebrow"><span class="eyebrow-mark"></span> GEÇEN SÜRE VE GÜVENLİK</p>
             <h3>Dalgıç Bezeli (Diver's Bezel)</h3>
@@ -62,20 +64,26 @@
             <p class="bezel-tip">
               <strong>Önemli Güvenlik Notu:</strong> Mekanik dalgıç bezeli pratik bir yedek göstergedir. Modern teknik ve tüplü dalışlarda dijital dalış bilgisayarlarının (dive computer) ve profesyonel dalış planlama kurallarının yerine geçmez.
             </p>
+
+            <button class="card-link bezel-detail-link" type="button" popovertarget="bezel-modal-dive">
+              Kullanım videosunu & detayları incele <span>▶</span>
+            </button>
           </div>
         </article>
 
         <!-- 2. TAKİMETRE BEZELİ -->
         <article class="bezel-guide">
-          <div class="bezel-visual tachy-visual" aria-hidden="true">
-            <div class="bezel-face">
-              <span>60</span>
-              <span>120</span>
-              <span>240</span>
-              <span>400</span>
-              <i></i>
-            </div>
+          <div class="bezel-preview-wrap">
+            <button class="bezel-preview-btn" type="button" popovertarget="bezel-modal-tachy" aria-label="Takimetre videosunu ve detayını izle">
+              <img src="media/takimetre-bezel.jpg" alt="Takimetre (Tachymeter)" class="bezel-image" onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src='media/takimetre-bezel.png';}">
+              <div class="bezel-preview-badge">
+                <span class="badge-icon">▶</span>
+                <span class="badge-text">Kullanım Videosunu İzle</span>
+              </div>
+            </button>
+            <span class="bezel-hint-text">Görsel: <code>media/takimetre-bezel.jpg</code></span>
           </div>
+
           <div class="bezel-copy">
             <p class="eyebrow"><span class="eyebrow-mark"></span> HIZ VE VERİMLİLİK ÖLÇÜMÜ</p>
             <h3>Takimetre (Tachymeter)</h3>
@@ -93,20 +101,26 @@
             <p class="bezel-tip">
               <strong>Matematiksel Formül:</strong> Takimetre skalası \( T = 3600 / t \) mantığıyla çalışır. Sadece hız değil, bir saatte üretilen endüstriyel parça adedini hesaplamak için de kullanılabilir (örneğin 1 parçanın üretimi 15 saniye sürüyorsa takimetre 240 parça/saat gösterir).
             </p>
+
+            <button class="card-link bezel-detail-link" type="button" popovertarget="bezel-modal-tachy">
+              Kullanım videosunu & detayları incele <span>▶</span>
+            </button>
           </div>
         </article>
 
         <!-- 3. GMT BEZELİ -->
         <article class="bezel-guide">
-          <div class="bezel-visual gmt-visual" aria-hidden="true">
-            <div class="bezel-face">
-              <span>24</span>
-              <span>6</span>
-              <span>12</span>
-              <span>18</span>
-              <i></i>
-            </div>
+          <div class="bezel-preview-wrap">
+            <button class="bezel-preview-btn" type="button" popovertarget="bezel-modal-gmt" aria-label="GMT Bezeli videosunu ve detayını izle">
+              <img src="media/gmt-bezel.jpg" alt="GMT Bezeli (24 Saat Halkası)" class="bezel-image" onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src='media/gmt-bezel.png';}">
+              <div class="bezel-preview-badge">
+                <span class="badge-icon">▶</span>
+                <span class="badge-text">Kullanım Videosunu İzle</span>
+              </div>
+            </button>
+            <span class="bezel-hint-text">Görsel: <code>media/gmt-bezel.jpg</code></span>
           </div>
+
           <div class="bezel-copy">
             <p class="eyebrow"><span class="eyebrow-mark"></span> ÇOKLU ZAMAN DİLİMLERİ</p>
             <h3>GMT Bezeli (24 Saat Halkası)</h3>
@@ -124,8 +138,82 @@
             <p class="bezel-tip">
               <strong>İpucu:</strong> İki renkli bezellerde (örneğin mavi/kırmızı Pepsi veya siyah/mavi Batman) üst yarı gece saatlerini (18:00 - 06:00), alt yarı ise gündüz aydınlığını (06:00 - 18:00) simgeler.
             </p>
+
+            <button class="card-link bezel-detail-link" type="button" popovertarget="bezel-modal-gmt">
+              Kullanım videosunu & detayları incele <span>▶</span>
+            </button>
           </div>
         </article>
+      </div>
+
+      <!-- POPOVER VIDEO MODALS -->
+      <!-- 1. Dalgıç Bezeli Video Modalı -->
+      <div class="popover-panel bezel-video-panel" id="bezel-modal-dive" popover>
+        <button class="popover-close" type="button" popovertarget="bezel-modal-dive" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> VİDEOLU KULLANIM REHBERİ</p>
+        <h3>Dalgıç Bezeli Nasıl Kullanılır?</h3>
+        <p class="popover-lead">Dalgıç bezeli ile geçen süreyi hatasız ölçme, tek yöne dönüş emniyeti ve pratik günlük kullanım adımları.</p>
+        
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/JxawsYAOTwA?si=AmiWsAfJa2VOzgLr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-notes">
+          <h4>Önemli Noktalar</h4>
+          <ul>
+            <li><strong>Sıfırlama:</strong> Üçgen sıfır işaretini (▼) o anki yelkovanın tam üzerine çevirin.</li>
+            <li><strong>Süre Okuma:</strong> Yelkovanın bezelde işaret ettiği rakam (10, 20, 30 dk) geçen süredir.</li>
+            <li><strong>Güvenlik Emniyeti:</strong> Bezel yalnızca saatin tersi yönünde döner; çarpma durumunda kalan süreyi asla olduğundan fazla göstermez.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. Takimetre Video Modalı -->
+      <div class="popover-panel bezel-video-panel" id="bezel-modal-tachy" popover>
+        <button class="popover-close" type="button" popovertarget="bezel-modal-tachy" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> VİDEOLU KULLANIM REHBERİ</p>
+        <h3>Takimetre (Tachymeter) Nasıl Kullanılır?</h3>
+        <p class="popover-lead">Kronograf ibresi ve dış takimetre ölçeğiyle ortalama hız (km/s) ve saatteki üretim adedini pratik hesaplama.</p>
+        
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/2e5vrBVNXzg?si=SLJd8jNTEXz963rz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-notes">
+          <h4>Önemli Noktalar</h4>
+          <ul>
+            <li><strong>1 Km / Mil Kuralı:</strong> Başlangıç noktasında kronografı başlatın, 1 birim mesafe tamamlandığında durdurun.</li>
+            <li><strong>Hız Değeri:</strong> Saniye ibresinin takimetrede işaret ettiği sayı doğrudan saatteki hızınızdır (örneğin 30 sn = 120 km/s).</li>
+            <li><strong>Matematik Mantığı:</strong> \( T = 3600 / t \) esasına dayanır, saatteki endüstriyel üretim temposunu ölçmek için de kullanılabilir.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. GMT Bezeli Video Modalı -->
+      <div class="popover-panel bezel-video-panel" id="bezel-modal-gmt" popover>
+        <button class="popover-close" type="button" popovertarget="bezel-modal-gmt" popovertargetaction="hide" aria-label="Kapat">×</button>
+        <p class="eyebrow"><span class="eyebrow-mark"></span> VİDEOLU KULLANIM REHBERİ</p>
+        <h3>GMT Bezeli (24 Saat Halkası) Nasıl Kullanılır?</h3>
+        <p class="popover-lead">24 saatte bir tam tur atan bağımsız GMT ibresi ve döner dış halkayla aynı anda 3 farklı saat dilimini izleme.</p>
+        
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/giMKGfy5IV4?enablejsapi=1" 
+            title="GMT Bezeli Nasıl Kullanılır?" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="video-notes">
+          <h4>Önemli Noktalar</h4>
+          <ul>
+            <li><strong>Yerel Saat:</strong> Standart akrep ve yelkovan yerel saat dilimini gösterir.</li>
+            <li><strong>GMT İbresi:</strong> Renkli ok uçlu ibre evinizin saatini (veya UTC referansını) dış 24 saatlik skala üzerinde gösterir.</li>
+            <li><strong>Çift Yönlü Bezel:</strong> Bezel sağa veya sola çevrilerek gitmek istediğiniz üçüncü şehrin saat farkı kadar kaydırılır.</li>
+          </ul>
+        </div>
       </div>
     </main>
 

@@ -26,3 +26,21 @@
 
 5. **Kart Boyutları:**
    - Tüm kartlar daha uzun ve ferah dikey ölçülerle (`min-height: 380px` – `420px`) korundu.
+
+6. **Bezeller Sayfası Görselleri (Media Klasörü) & YouTube Video Embed Sistemi:**
+   - **`media/` Klasörü ve Özel Görsel Desteği:**
+     - Proje kök dizininde `media/` adında bir klasör oluşturuldu.
+     - `bezeller.html` sayfasındaki yapay CSS çizimleri kaldırılarak doğrudan bu klasördeki görselleri yükleyecek yapıya geçildi:
+       - `media/dalgic-bezel.jpg` (Dalgıç Bezeli)
+       - `media/takimetre-bezel.jpg` (Takimetre Bezeli)
+       - `media/gmt-bezel.jpg` (GMT Bezeli)
+     - `media/` içerisine yüksek çözünürlüklü ve detaylı başlangıç görselleri ve rehber `README.md` dosyası eklendi. Kullanıcı kendi istediği görselleri bu klasöre aynı isimle atarak sayfayı dilediği gibi özelleştirebilir (JPG ve PNG yedekli fallback desteği mevcuttur).
+   - **Tıklanabilir Önizleme & Detay Butonları:**
+     - Bezel görsel önizlemesine tıklanabilir buton ve üzerinde cam efektli *"Kullanım Videosunu İzle ▶"* etiketi eklendi.
+     - Kart metinlerinin altına da *"Kullanım videosunu & detayları incele ▶"* butonu yerleştirildi.
+   - **YouTube Video Embed Modalları (Popover):**
+     - Önizlemeye veya detay butonuna basıldığında ilgili bezelin nasıl kullanıldığını anlatan YouTube embed videosu ve pratik kullanım adımlarını içeren modal pencere açılır:
+       - **Dalgıç Bezeli:** İstenen YouTube videosu (`https://www.youtube.com/embed/JxawsYAOTwA?si=AmiWsAfJa2VOzgLr`) 16:9 responsive video çerçevesi ile entegre edildi.
+       - **Takimetre:** İstenen YouTube videosu (`https://www.youtube.com/embed/2e5vrBVNXzg?si=SLJd8jNTEXz963rz`) 16:9 responsive video çerçevesi ile entegre edildi.
+       - **GMT Bezeli:** 24 saatlik ibre ve çift yönlü bezel ile 3 farklı zaman dilimini takip etme videosu.
+     - Modal kapatıldığında YouTube videosunun arkaplanda ses çalmaya devam etmesini önleyen otomatik durdurma mekanizması (`script.js`) entegre edildi.
