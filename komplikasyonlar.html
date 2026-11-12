@@ -34,12 +34,16 @@
       </header>
 
       <div class="search-panel complication-search-panel">
-        <label class="search-field">
+        <div class="search-field">
           <span aria-hidden="true">⌕</span>
-          <span class="visually-hidden">Komplikasyonlarda ara</span>
+          <label for="complication-search" class="visually-hidden">Komplikasyonlarda ara</label>
           <input id="complication-search" type="search" placeholder="Komplikasyon veya özellik ara..." autocomplete="off">
-        </label>
-        <p class="result-count" id="complication-count" aria-live="polite"></p>
+          <button type="button" class="search-clear-btn" id="complication-search-clear" aria-label="Aramayı temizle" hidden>×</button>
+        </div>
+        <div class="result-bar">
+          <p class="result-count" id="complication-count" aria-live="polite"></p>
+          <button type="button" class="reset-filter-btn" id="complication-reset" hidden>Filtreleri Temizle ✕</button>
+        </div>
       </div>
 
       <div class="card-grid complication-grid" id="complication-grid">

@@ -1,21 +1,40 @@
 // saatbilgisi - Multi-page Navigation, Search & Full Watch Mechanism Engine
 
-const turkishLower = (value) => (value ? value.toLocaleLowerCase("tr-TR") : "");
+// Robust case-folding & Turkish character normalization
+const normalizeSearchText = (value) => {
+  if (!value) return "";
+  return value
+    .toString()
+    .trim()
+    .replace(/İ/g, "i")
+    .replace(/I/g, "ı")
+    .toLocaleLowerCase("tr-TR")
+    .replace(/ı/g, "i")
+    .replace(/ç/g, "c")
+    .replace(/ğ/g, "g")
+    .replace(/ö/g, "o")
+    .replace(/ş/g, "s")
+    .replace(/ü/g, "u");
+};
 
 // SEARCH & FILTER SYSTEM
 function setupSearch({
   inputId,
+  clearInputId,
   gridId,
   emptyId,
   countId,
+  resetId,
   filters = [],
   itemSelector,
   countLabel,
 }) {
   const input = document.getElementById(inputId);
+  const clearInputBtn = clearInputId ? document.getElementById(clearInputId) : null;
   const grid = document.getElementById(gridId);
   const emptyState = document.getElementById(emptyId);
   const count = document.getElementById(countId);
+  const resetBtn = resetId ? document.getElementById(resetId) : null;
 
   // Guard if elements do not exist on current page
   if (!input || !grid || !emptyState || !count) return;
@@ -27,41 +46,86 @@ function setupSearch({
   })).filter(f => f.control !== null);
 
   const update = () => {
-    const query = turkishLower(input.value.trim());
+    const rawQuery = input.value.trim();
+    const normalizedQuery = normalizeSearchText(rawQuery);
+    const queryTokens = normalizedQuery ? normalizedQuery.split(/\s+/).filter(Boolean) : [];
     let visibleCount = 0;
 
     for (const item of items) {
-      const searchableText = turkishLower(
+      const searchableText = normalizeSearchText(
         `${item.textContent} ${item.dataset.search ?? ""}`,
       );
-      const matchesQuery = !query || searchableText.includes(query);
+      const matchesQuery = queryTokens.length === 0 || queryTokens.every(token => searchableText.includes(token));
+      
       const matchesFilters = filterControls.every(({ control, attribute }) => {
         const selectedValue = control.value;
         if (!selectedValue) return true;
         if (attribute === "reserve") {
           if (selectedValue === "medium") {
             const hours = Number(item.dataset.reserveHours);
-            return hours > 0 && hours < 40;
+            return !isNaN(hours) && hours > 0 && hours < 40;
           }
           if (selectedValue === "long") {
-            return Number(item.dataset.reserveHours) >= 40;
+            const hours = Number(item.dataset.reserveHours);
+            return !isNaN(hours) && hours >= 40;
+          }
+          if (selectedValue === "battery") {
+            return item.dataset.reserve === "battery";
           }
         }
         return item.dataset[attribute] === selectedValue;
       });
 
-      item.hidden = !(matchesQuery && matchesFilters);
-      if (!item.hidden) visibleCount += 1;
+      const isVisible = matchesQuery && matchesFilters;
+      item.hidden = !isVisible;
+      item.style.display = isVisible ? "" : "none";
+      if (isVisible) visibleCount += 1;
     }
 
     emptyState.hidden = visibleCount !== 0;
+    emptyState.style.display = visibleCount === 0 ? "" : "none";
     count.textContent = `${visibleCount} / ${items.length} ${countLabel}`;
+
+    if (clearInputBtn) {
+      const hasInputText = Boolean(rawQuery);
+      clearInputBtn.hidden = !hasInputText;
+      clearInputBtn.style.display = hasInputText ? "" : "none";
+    }
+
+    if (resetBtn) {
+      const hasActiveFilters = Boolean(rawQuery) || filterControls.some(({ control }) => Boolean(control.value));
+      resetBtn.hidden = !hasActiveFilters;
+      resetBtn.style.display = hasActiveFilters ? "" : "none";
+    }
+  };
+
+  const resetAll = () => {
+    input.value = "";
+    for (const { control } of filterControls) {
+      control.value = "";
+    }
+    update();
+    input.focus();
   };
 
   input.addEventListener("input", update);
+  input.addEventListener("search", update);
   for (const { control } of filterControls) {
     control.addEventListener("change", update);
+    control.addEventListener("input", update);
   }
+
+  if (clearInputBtn) {
+    clearInputBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      resetAll();
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", resetAll);
+  }
+
   update();
 }
 
@@ -983,15 +1047,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize movement catalogue search & filters (mekanizmalar.html)
   setupSearch({
     inputId: "movement-search",
+    clearInputId: "movement-search-clear",
     gridId: "movement-grid",
     emptyId: "movement-empty",
     countId: "movement-count",
+    resetId: "movement-reset",
     itemSelector: ".movement-card",
     countLabel: "mekanizma gösteriliyor",
     filters: [
       { id: "origin-filter", attribute: "origin" },
       { id: "reserve-filter", attribute: "reserve" },
-      { id: "brand-filter", attribute: "brand" },
       { id: "maker-filter", attribute: "maker" },
     ],
   });
@@ -999,9 +1064,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize complication search (komplikasyonlar.html)
   setupSearch({
     inputId: "complication-search",
+    clearInputId: "complication-search-clear",
     gridId: "complication-grid",
     emptyId: "complication-empty",
     countId: "complication-count",
+    resetId: "complication-reset",
     itemSelector: ".complication-card",
     countLabel: "komplikasyon gösteriliyor",
   });

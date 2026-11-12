@@ -34,11 +34,12 @@
       </header>
 
       <div class="search-panel">
-        <label class="search-field">
+        <div class="search-field">
           <span aria-hidden="true">⌕</span>
-          <span class="visually-hidden">Mekanizmalarda ara</span>
+          <label for="movement-search" class="visually-hidden">Mekanizmalarda ara</label>
           <input id="movement-search" type="search" placeholder="Mekanizma veya özellik ara..." autocomplete="off">
-        </label>
+          <button type="button" class="search-clear-btn" id="movement-search-clear" aria-label="Aramayı temizle" hidden>×</button>
+        </div>
         <label class="filter-label">Menşei
           <select id="origin-filter" aria-label="Menşeine göre filtrele">
             <option value="">Tüm menşeler</option>
@@ -54,15 +55,6 @@
             <option value="battery">Pilli (Kuvars)</option>
           </select>
         </label>
-        <label class="filter-label">Marka
-          <select id="brand-filter" aria-label="Markaya göre filtrele">
-            <option value="">Tüm markalar</option>
-            <option value="Seiko">Seiko</option>
-            <option value="ETA">ETA</option>
-            <option value="Ronda">Ronda</option>
-            <option value="Miyota">Miyota</option>
-          </select>
-        </label>
         <label class="filter-label">Üretici
           <select id="maker-filter" aria-label="Üreticiye göre filtrele">
             <option value="">Tüm üreticiler</option>
@@ -72,7 +64,10 @@
             <option value="Miyota / Citizen">Miyota / Citizen</option>
           </select>
         </label>
-        <p class="result-count" id="movement-count" aria-live="polite"></p>
+        <div class="result-bar">
+          <p class="result-count" id="movement-count" aria-live="polite"></p>
+          <button type="button" class="reset-filter-btn" id="movement-reset" hidden>Filtreleri Temizle ✕</button>
+        </div>
       </div>
 
       <div class="card-grid movement-grid" id="movement-grid">
