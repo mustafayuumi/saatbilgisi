@@ -1,3 +1,5 @@
+# BU DOSYA FARKLI AI SESSIONLARINA ÖNCEKİNE DAİR REFERANS OLMASI İÇİNDİR.
+
 # Yapılan Değişiklikler
 
 1. **Ayrı HTML Sayfalarına Bölme (Multi-Page):**
