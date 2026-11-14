@@ -1,4 +1,4 @@
-# Saatler · Rehber (Saat Bilgisi)
+# Saat Bilgisi
 
 Saat dünyasının mikro mühendislik harikalarını, mekanik kalibrelerini, komplikasyonlarını ve bezel fonksiyonlarını interaktif simülasyonlar ve kapsamlı teknik rehberlerle sunan modern bir web projesidir.
 
